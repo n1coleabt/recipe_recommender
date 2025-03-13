@@ -1,0 +1,21 @@
+streamlit
+pandas
+scikit-learn
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+# Convert ingredients into numerical features
+vectorizer = TfidfVectorizer(stop_words='english')
+X = vectorizer.fit_transform(df['ingredient'])  # Ensure column name is correct
+
+# Function to find similar recipes
+def recommend_recipes(user_ingredients, top_n=5):
+    user_vec = vectorizer.transform([user_ingredients.lower()])
+    sim_scores = cosine_similarity(user_vec, X).flatten()
+    top_indices = sim_scores.argsort()[-top_n:][::-1]
+    return df.iloc[top_indices][['group', 'ingredient']]
+
+# Example usage
+user_ingredients = "chicken, garlic, tomato"
+print(recommend_recipes(user_ingredients))
