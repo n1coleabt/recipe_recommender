@@ -1,0 +1,17 @@
+streamlit
+torch
+transformers
+sentencepiece
+accelerate
+faiss-cpu
+evaluate
+datasets
+scipy
+numpy
+pandas
+requests
+beautifulsoup4
+recipe-scrapers
+PyPDF2
+reportlab
+textwrap
