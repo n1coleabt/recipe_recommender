@@ -27,4 +27,4 @@ if st.button("Generate Recipe"):
         st.write(recipe)
     else:
         st.warning("Please enter a description of your desired dish.")
-''')
+
