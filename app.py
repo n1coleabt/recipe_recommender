@@ -3,7 +3,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
 
 # Load fine-tuned model and tokenizer
-MODEL_PATH = "fine_tuned_recipe_model"  # Change this if hosting on Hugging Face
+MODEL_PATH = "nabt1/fine_tuned_recipe_model"
 model = AutoModelForCausalLM.from_pretrained(MODEL_PATH)
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
 
@@ -27,3 +27,4 @@ if st.button("Generate Recipe"):
         st.write(recipe)
     else:
         st.warning("Please enter a description of your desired dish.")
+''')
