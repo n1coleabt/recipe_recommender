@@ -18,10 +18,10 @@ st.title("🍽️ Recipe Recommender App")
 st.write("Enter an ingredient or dish to get recipe recommendations!")
 
 # Load the fine-tuned recipe model
-MODEL_NAME = "nabt1/fine_tuned_recipe_model"
+model_name = "nabt1/fine_tuned_recipe_model"
 try:
-    model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, cache_dir="./model_cache")
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir="./model_cache")
+    model = AutoModelForCausalLM.from_pretrained(model_name, cache_dir="./model_cache")
+    tokenizer = AutoTokenizer.from_pretrained(model_name, cache_dir="./model_cache")
     print("Model loaded successfully!")
 except Exception as e:
     print(f"Error loading model: {e}")
