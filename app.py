@@ -43,8 +43,6 @@ def load_llm():
     return model, tokenizer
 
 # Function to generate embeddings for query (Placeholder: replace with real embedding model)
-embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
-
 def get_embedding(query):
     return embedding_model.encode([query], convert_to_numpy=True)  # This returns (1, 384)
 
