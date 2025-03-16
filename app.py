@@ -1,4 +1,4 @@
-import asyncio
+import asyncio 
 asyncio.set_event_loop(asyncio.new_event_loop())
 
 import streamlit as st
@@ -8,11 +8,15 @@ import numpy as np
 import torch
 import json
 import os
+from sentence_transformers import SentenceTransformer  # Import SentenceTransformer
+
+# Load sentence embedding model
+embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
 
 # Check if FAISS index exists
 if not os.path.exists("faiss_index.idx"):
     # Dummy data for vectorized recipes (replace with actual embeddings)
-    recipe_embeddings = np.random.rand(100, 768).astype("float32")
+    recipe_embeddings = np.random.rand(100, 384).astype("float32")  # Use correct dimension
 
     # Create a FAISS index
     index = faiss.IndexFlatL2(recipe_embeddings.shape[1])
@@ -42,9 +46,9 @@ def load_llm():
     model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.float16, device_map="auto")
     return model, tokenizer
 
-# Function to generate embeddings for query (Placeholder: replace with real embedding model)
+# Function to generate embeddings for query
 def get_embedding(query):
-    return embedding_model.encode([query], convert_to_numpy=True)  # This returns (1, 384)
+    return embedding_model.encode([query], convert_to_numpy=True)  # Use correct dimension
 
 # Function to retrieve recipes
 def retrieve_recipes(query, k=5):
@@ -62,10 +66,10 @@ def retrieve_recipes(query, k=5):
 def generate_summary(recipe):
     model, tokenizer = load_llm()
     prompt = (
-    f"Summarize this Japanese recipe: {recipe['title']}\n\n"
-    f"Ingredients: {', '.join(recipe['ingredients'])}\n\n"
-    f"Instructions: {recipe['instructions']}"
-)
+        f"Summarize this Japanese recipe: {recipe['title']}\n\n"
+        f"Ingredients: {', '.join(recipe['ingredients'])}\n\n"
+        f"Instructions: {recipe['instructions']}"
+    )
     
     inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
     outputs = model.generate(**inputs, max_length=150)
