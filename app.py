@@ -3,17 +3,36 @@ asyncio.set_event_loop(asyncio.new_event_loop())
 import streamlit as st
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import faiss
+import numpy as np
 import torch
 import json
 import os
 
+print(os.path.exists("faiss_index.idx"))
+
+# Load your vectorized recipes data (replace with actual embeddings)
+recipe_embeddings = np.random.rand(100, 768).astype("float32")  # Dummy data
+
+# Create a FAISS index
+index = faiss.IndexFlatL2(recipe_embeddings.shape[1])
+index.add(recipe_embeddings)
+
+# Save the index
+faiss.write_index(index, "faiss_index.idx")
+print("FAISS index created and saved.")
+
 # Load the FAISS index and recipe metadata
 @st.cache_resource()
 def load_faiss_index():
-    index = faiss.read_index("faiss_index.idx")
-    with open("recipes_metadata.json", "r") as f:
+    try:
+        index = faiss.read_index("faiss_index.idx")
+        with open("recipes_metadata.json", "r") as f:
         recipes = json.load(f)
     return index, recipes
+    
+    except Exception as e:
+        print(f"Error loading FAISS index: {e}")
+        return None  # Handle this in your app gracefully
 
 # Load LLM for generating summaries
 @st.cache_resource()
