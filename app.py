@@ -8,33 +8,55 @@ import faiss
 import numpy as np
 import pandas as pd
 from sentence_transformers import SentenceTransformer
-from recipe_recommender import search_recipes
+import os
 
-# Streamlit UI
+# Set Streamlit page config
+st.set_page_config(page_title="Recipe Recommender", layout="wide")
+
+# Title and description
 st.title("🍽️ Recipe Recommender App")
-st.write("Find the best recipes based on your ingredients or preferences.")
+st.write("Enter an ingredient or dish to get recipe recommendations!")
+
+# Load the fine-tuned recipe model
+model_name = "fine_tuned_recipe_model"
+
+if os.path.exists(model_name):
+    model = AutoModelForCausalLM.from_pretrained(model_name)
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+else:
+    st.error(f"Model directory `{model_name}` not found! Please upload the fine-tuned model.")
+    st.stop()
+
+# Load FAISS index and recipe texts
+try:
+    index = faiss.read_index("recipe_index.faiss")
+    recipe_texts = np.load("recipe_texts.npy", allow_pickle=True)
+except Exception as e:
+    st.error(f"Error loading FAISS index or recipe texts: {e}")
+    st.stop()
+
+# Load embedding model
+embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
 
 # User input
-user_query = st.text_input("Enter an ingredient or dish name:")
-if st.button("Search"):
-    if user_query:
-        results = search_recipes(user_query)
-        if results:
-            st.write("### Recommended Recipes:")
-            selected_recipes = []
-            for recipe in results:
-                st.write(f"**{recipe['name']}**")
-                st.write(f"Ingredients: {', '.join(recipe['ingredients'])}")
-                st.write(f"Steps: {recipe['steps'][:200]}...")  # Show only first 200 chars
-                if st.checkbox(f"Select {recipe['name']} for PDF"):
-                    selected_recipes.append(recipe)
+user_query = st.text_input("🔎 Enter an ingredient or dish:")
 
-            if selected_recipes:
-                if st.button("Download Selected Recipes as PDF"):
-                    create_pdf(selected_recipes)
-                    with open("recommended_recipes.pdf", "rb") as pdf_file:
-                        st.download_button("Download PDF", pdf_file, "recipes.pdf")
-        else:
-            st.write("No matching recipes found.")
+if user_query:
+    # Convert input query to embedding
+    query_embedding = embedding_model.encode([user_query], convert_to_numpy=True)
+
+    # Search in FAISS
+    k = 5  # Number of results
+    D, I = index.search(query_embedding, k)
+
+    # Display results
+    if len(I[0]) > 0:
+        st.subheader("🥘 Recommended Recipes:")
+        for i in I[0]:
+            st.write(f"- {recipe_texts[i]}")
     else:
-        st.write("Please enter a search query.")
+        st.warning("No matching recipes found. Try a different ingredient or dish!")
+
+# Footer
+st.markdown("---")
+st.markdown("Made with ❤️ using Streamlit & FAISS")
