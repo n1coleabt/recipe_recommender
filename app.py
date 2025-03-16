@@ -1,3 +1,6 @@
+import asyncio
+asyncio.set_event_loop(asyncio.new_event_loop())
+
 import streamlit as st
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
@@ -8,18 +11,27 @@ from sentence_transformers import SentenceTransformer
 import os
 
 # Set Streamlit page config
-st.set_page_config(page_title="Recipe Recommender", layout="wide")
+st.set_page_config(page_title="🍣 Japanese Recipe Recommender", layout="wide")
 
 # Title and description
-st.title("🍽️ Recipe Recommender")
-st.write("Enter an ingredient or dish to get recipe recommendations!")
+st.title("🍣 Japanese Recipe Recommender")
+st.write("Discover delicious **Japanese main dishes** from [AllRecipes](https://www.allrecipes.com/recipes/17491/world-cuisine/asian/japanese/main-dishes/). Enter an ingredient or dish to get personalized recommendations!")
 
 # Load the fine-tuned recipe model
 model_name = "nabt1/fine_tuned_recipe_model"
+try:
+    model = AutoModelForCausalLM.from_pretrained(model_name, cache_dir="./model_cache")
+    tokenizer = AutoTokenizer.from_pretrained(model_name, cache_dir="./model_cache")
+    print("Model loaded successfully!")
+except Exception as e:
+    print(f"Error loading model: {e}")
 
-model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code=True)
-tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=False)
-print("Updated and loaded new model!")
+if os.path.exists(model_name):
+    model = AutoModelForCausalLM.from_pretrained(model_name)
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+else:
+    st.error(f"Model directory `{model_name}` not found! Please upload the fine-tuned model.")
+    st.stop()
 
 # Load FAISS index and recipe texts
 try:
@@ -33,7 +45,10 @@ except Exception as e:
 embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
 
 # User input
-user_query = st.text_input("🔎 Enter an ingredient or dish:")
+st.markdown("### 🔎 Search for a Japanese Dish")
+st.markdown("_Note: This recommender only provides recipes from the **[AllRecipes Japanese Main Dishes](https://www.allrecipes.com/recipes/17491/world-cuisine/asian/japanese/main-dishes/)** section._")
+
+user_query = st.text_input("Enter an ingredient or dish:")
 
 if user_query:
     # Convert input query to embedding
@@ -45,12 +60,15 @@ if user_query:
 
     # Display results
     if len(I[0]) > 0:
-        st.subheader("🥘 Recommended Recipes:")
+        st.subheader("🍜 Recommended Japanese Recipes:")
         for i in I[0]:
             st.write(f"- {recipe_texts[i]}")
     else:
-        st.warning("No matching recipes found. Try a different ingredient or dish!")
+        st.warning("No matching Japanese recipes found. Try a different ingredient or dish!")
 
+# Footer
+st.markdown("---")
+st.markdown("Made with ❤️ using **Streamlit** & **FAISS** | Recipes sourced from [AllRecipes](https://www.allrecipes.com/recipes/17491/world-cuisine/asian/japanese/main-dishes/)")
 # Footer
 st.markdown("---")
 st.markdown("Made with ❤️ using Streamlit & FAISS")
