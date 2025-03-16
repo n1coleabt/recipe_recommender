@@ -15,14 +15,11 @@ st.title("🍽️ Recipe Recommender")
 st.write("Enter an ingredient or dish to get recipe recommendations!")
 
 # Load the fine-tuned recipe model
-model_name = "fine_tuned_recipe_model"
+model_name = "nabt1/fine_tuned_recipe_model"
 
-if os.path.exists(model_name):
-    model = AutoModelForCausalLM.from_pretrained(model_name)
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-else:
-    st.error(f"Model directory `{model_name}` not found! Please upload the fine-tuned model.")
-    st.stop()
+model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+print("Updated and loaded new model!")
 
 # Load FAISS index and recipe texts
 try:
