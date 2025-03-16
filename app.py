@@ -38,6 +38,15 @@ except Exception as e:
 # Load embedding model
 embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
 
+MODEL_NAME = "nabt1/fine_tuned_recipe_model"
+
+try:
+    model = AutoModelForCausalLM.from_pretrained(MODEL_NAME)
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+    print("Model loaded successfully!")
+except Exception as e:
+    print(f"Error loading model: {e}")
+
 # User input
 user_query = st.text_input("🔎 Enter an ingredient or dish:")
 
