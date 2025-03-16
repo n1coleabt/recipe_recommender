@@ -10,7 +10,7 @@ import os
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from sentence_transformers import SentenceTransformer
 
-# Load Sentence Transformer Model (Ensure it's available)
+# Load Sentence Transformer Model (For FAISS Search)
 @st.cache_resource()
 def load_embedding_model():
     return SentenceTransformer("all-MiniLM-L6-v2")
@@ -29,17 +29,22 @@ def load_faiss_index():
         st.error(f"Error loading FAISS index: {e}")
         return None, None
 
-# Load LLM Model (Use smaller model)
+# ✅ Load a smaller LLM model
 @st.cache_resource()
 def load_llm():
-    model_name = "mistralai/Mistral-7B-v0.1"  # Smaller model
+    model_name = "facebook/opt-1.3b"  # ✅ A much smaller model that fits in Streamlit Cloud memory
     tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.float16, device_map="auto")
+    model = AutoModelForCausalLM.from_pretrained(
+        model_name,
+        torch_dtype=torch.float16,
+        device_map="auto",
+        low_cpu_mem_usage=True  # ✅ Prevents memory overload
+    )
     return model, tokenizer
 
 # Function to generate embeddings
 def get_embedding(query):
-    return embedding_model.encode([query], convert_to_numpy=True)  # Ensure this matches FAISS index
+    return embedding_model.encode([query], convert_to_numpy=True)
 
 # Function to retrieve recipes
 def retrieve_recipes(query, k=5):
@@ -59,7 +64,7 @@ def retrieve_recipes(query, k=5):
     results = [recipes[i] for i in indices[0] if i < len(recipes)]
     return results
 
-# Function to generate LLM-based summaries
+# ✅ Function to generate LLM-based summaries
 def generate_summary(recipe):
     model, tokenizer = load_llm()
     prompt = (
