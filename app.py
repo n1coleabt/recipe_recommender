@@ -1,14 +1,15 @@
 import asyncio
-asyncio.set_event_loop(asyncio.new_event_loop())
-
+import os
 import streamlit as st
-from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
 import faiss
 import numpy as np
 import pandas as pd
+from transformers import AutoModelForCausalLM, AutoTokenizer
 from sentence_transformers import SentenceTransformer
-import os
+
+# Ensure proper event loop handling
+asyncio.set_event_loop(asyncio.new_event_loop())
 
 # Set Streamlit page config
 st.set_page_config(page_title="Recipe Recommender", layout="wide")
@@ -17,28 +18,33 @@ st.set_page_config(page_title="Recipe Recommender", layout="wide")
 st.title("🍽️ Recipe Recommender App")
 st.write("Enter an ingredient or dish to get recipe recommendations!")
 
-# Load the fine-tuned recipe model
-model_name = "nabt1/fine_tuned_recipe_model"
-try:
-    model = AutoModelForCausalLM.from_pretrained(model_name, cache_dir="./model_cache")
-    tokenizer = AutoTokenizer.from_pretrained(model_name, cache_dir="./model_cache")
-    print("Model loaded successfully!")
-except Exception as e:
-    print(f"Error loading model: {e}")
+# Model name from Hugging Face
+MODEL_NAME = "nabt1/fine_tuned_recipe_model"
 
-if os.path.exists(model_name):
-    model = AutoModelForCausalLM.from_pretrained(model_name)
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-else:
-    st.error(f"Model directory `{model_name}` not found! Please upload the fine-tuned model.")
+# Load the fine-tuned recipe model
+try:
+    model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, cache_dir="./model_cache")
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir="./model_cache")
+    st.success("✅ Model loaded successfully!")
+except Exception as e:
+    st.error(f"❌ Error loading model: {e}")
+    st.stop()
+
+# Check if FAISS index and recipe texts exist
+INDEX_PATH = "recipe_index.faiss"
+TEXTS_PATH = "recipe_texts.npy"
+
+if not (os.path.exists(INDEX_PATH) and os.path.exists(TEXTS_PATH)):
+    st.error("❌ FAISS index or recipe texts not found! Ensure the required files are available.")
     st.stop()
 
 # Load FAISS index and recipe texts
 try:
-    index = faiss.read_index("recipe_index.faiss")
-    recipe_texts = np.load("recipe_texts.npy", allow_pickle=True)
+    index = faiss.read_index(INDEX_PATH)
+    recipe_texts = np.load(TEXTS_PATH, allow_pickle=True)
+    st.success("✅ FAISS index and recipe texts loaded successfully!")
 except Exception as e:
-    st.error(f"Error loading FAISS index or recipe texts: {e}")
+    st.error(f"❌ Error loading FAISS index or recipe texts: {e}")
     st.stop()
 
 # Load embedding model
@@ -61,7 +67,7 @@ if user_query:
         for i in I[0]:
             st.write(f"- {recipe_texts[i]}")
     else:
-        st.warning("No matching recipes found. Try a different ingredient or dish!")
+        st.warning("⚠️ No matching recipes found. Try a different ingredient or dish!")
 
 # Footer
 st.markdown("---")
