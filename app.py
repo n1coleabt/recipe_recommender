@@ -93,8 +93,3 @@ if query:
 # Footer
 st.markdown("---")
 st.markdown("Made with ❤️ using **Streamlit** & **FAISS** | Recipes sourced from [AllRecipes](https://www.allrecipes.com/recipes/17491/world-cuisine/asian/japanese/main-dishes/)")
-
-with open("/content/app.py", "w") as file:
-    file.write(code)
-
-print("app.py has been saved successfully!")
