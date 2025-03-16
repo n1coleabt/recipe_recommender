@@ -61,11 +61,11 @@ def retrieve_recipes(query, k=5):
 # Function to generate LLM-based summaries
 def generate_summary(recipe):
     model, tokenizer = load_llm()
-    prompt = f"Summarize this Japanese recipe: {recipe['title']}
-
-Ingredients: {', '.join(recipe['ingredients'])}
-
-Instructions: {recipe['instructions']}"
+    prompt = (
+    f"Summarize this Japanese recipe: {recipe['title']}\n\n"
+    f"Ingredients: {', '.join(recipe['ingredients'])}\n\n"
+    f"Instructions: {recipe['instructions']}"
+)
     
     inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
     outputs = model.generate(**inputs, max_length=150)
