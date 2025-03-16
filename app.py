@@ -1,3 +1,6 @@
+import asyncio
+asyncio.set_event_loop(asyncio.new_event_loop())
+
 import streamlit as st
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
@@ -5,6 +8,8 @@ import faiss
 import numpy as np
 import pandas as pd
 from sentence_transformers import SentenceTransformer
+from recipe_recommender import search_recipes
+
 # Streamlit UI
 st.title("🍽️ Recipe Recommender App")
 st.write("Find the best recipes based on your ingredients or preferences.")
