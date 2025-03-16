@@ -18,21 +18,14 @@ st.title("🍣 Japanese Recipe Recommender")
 st.write("Discover delicious **Japanese main dishes** from [AllRecipes](https://www.allrecipes.com/recipes/17491/world-cuisine/asian/japanese/main-dishes/). Enter an ingredient or dish to get personalized recommendations!")
 
 # Load the fine-tuned recipe model
-model_name = "nabt1/fine_tuned_recipe_model"
+mmodel_name = "nabt1/fine_tuned_recipe_model"
+
 try:
-    model = AutoModelForCausalLM.from_pretrained(model_name, cache_dir="./model_cache")
-    tokenizer = AutoTokenizer.from_pretrained(model_name, cache_dir="./model_cache")
-    print("Model loaded successfully!")
-except Exception as e:
-    print(f"Error loading model: {e}")
-
-if os.path.exists(model_name):
-    model = AutoModelForCausalLM.from_pretrained(model_name)
     tokenizer = AutoTokenizer.from_pretrained(model_name)
-else:
-    st.error(f"Model directory `{model_name}` not found! Please upload the fine-tuned model.")
-    st.stop()
-
+    print("Tokenizer loaded successfully!")
+except Exception as e:
+    print(f"Error loading tokenizer: {e}")
+    
 # Load FAISS index and recipe texts
 try:
     index = faiss.read_index("recipe_index.faiss")
@@ -69,6 +62,3 @@ if user_query:
 # Footer
 st.markdown("---")
 st.markdown("Made with ❤️ using **Streamlit** & **FAISS** | Recipes sourced from [AllRecipes](https://www.allrecipes.com/recipes/17491/world-cuisine/asian/japanese/main-dishes/)")
-# Footer
-st.markdown("---")
-st.markdown("Made with ❤️ using Streamlit & FAISS")
