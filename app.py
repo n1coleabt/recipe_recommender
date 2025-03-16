@@ -18,7 +18,13 @@ st.title("🍽️ Recipe Recommender App")
 st.write("Enter an ingredient or dish to get recipe recommendations!")
 
 # Load the fine-tuned recipe model
-model_name = "fine_tuned_recipe_model"
+MODEL_NAME = "nabt1/fine_tuned_recipe_model"
+try:
+    model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, cache_dir="./model_cache")
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir="./model_cache")
+    print("Model loaded successfully!")
+except Exception as e:
+    print(f"Error loading model: {e}")
 
 if os.path.exists(model_name):
     model = AutoModelForCausalLM.from_pretrained(model_name)
@@ -37,15 +43,6 @@ except Exception as e:
 
 # Load embedding model
 embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
-
-MODEL_PATH = "nabt1/fine_tuned_recipe_model"  # Change this to the correct path
-
-try:
-    model = AutoModelForCausalLM.from_pretrained(MODEL_PATH)
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
-    print("Model loaded successfully!")
-except Exception as e:
-    print(f"Error loading model: {e}")
 
 # User input
 user_query = st.text_input("🔎 Enter an ingredient or dish:")
