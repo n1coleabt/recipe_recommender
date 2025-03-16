@@ -15,6 +15,3 @@ beautifulsoup4
 recipe-scrapers
 PyPDF2
 reportlab
-transformers
-huggingface_hub
-
