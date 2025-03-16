@@ -46,6 +46,16 @@ def load_llm():
     model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.float16, device_map="auto")
     return model, tokenizer
 
+@st.cache_resource()
+def load_tokenizer():
+    model_name = "meta-llama/Llama-2-7b-chat-hf"
+    return AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+
+@st.cache_resource()
+def load_model():
+    model_name = "meta-llama/Llama-2-7b-chat-hf"
+    return AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.float16, device_map="auto", trust_remote_code=True)
+
 # Function to generate embeddings for query
 def get_embedding(query):
     return embedding_model.encode([query], convert_to_numpy=True)  # Use correct dimension
