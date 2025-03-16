@@ -1,64 +1,45 @@
-import asyncio 
+import asyncio
 asyncio.set_event_loop(asyncio.new_event_loop())
 
 import streamlit as st
-from transformers import AutoModelForCausalLM, AutoTokenizer
 import faiss
 import numpy as np
 import torch
 import json
 import os
-from sentence_transformers import SentenceTransformer  # Import SentenceTransformer
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from sentence_transformers import SentenceTransformer
 
-# Load sentence embedding model
-embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
+# Load Sentence Transformer Model (Ensure it's available)
+@st.cache_resource()
+def load_embedding_model():
+    return SentenceTransformer("all-MiniLM-L6-v2")
 
-# Check if FAISS index exists
-if not os.path.exists("faiss_index.idx"):
-    # Dummy data for vectorized recipes (replace with actual embeddings)
-    recipe_embeddings = np.random.rand(100, 384).astype("float32")  # Use correct dimension
+embedding_model = load_embedding_model()
 
-    # Create a FAISS index
-    index = faiss.IndexFlatL2(recipe_embeddings.shape[1])
-    index.add(recipe_embeddings)
-
-    # Save the index
-    faiss.write_index(index, "faiss_index.idx")
-    print("FAISS index created and saved.")
-
-# Load FAISS index and recipe metadata
+# Load FAISS index and recipes metadata
 @st.cache_resource()
 def load_faiss_index():
     try:
         index = faiss.read_index("faiss_index.idx")
-        with open("recipes_metadata.json", "r") as f:
+        with open("recipes_metadata.json", "r", encoding="utf-8") as f:
             recipes = json.load(f)
         return index, recipes
     except Exception as e:
         st.error(f"Error loading FAISS index: {e}")
         return None, None
 
-# Load LLM for generating summaries
+# Load LLM Model (Use smaller model)
 @st.cache_resource()
 def load_llm():
-    model_name = "meta-llama/Llama-2-7b-chat-hf"  # Try a smaller model
+    model_name = "mistralai/Mistral-7B-v0.1"  # Smaller model
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.float16, device_map="auto")
     return model, tokenizer
 
-@st.cache_resource()
-def load_tokenizer():
-    model_name = "meta-llama/Llama-2-7b-chat-hf"
-    return AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
-
-@st.cache_resource()
-def load_model():
-    model_name = "meta-llama/Llama-2-7b-chat-hf"
-    return AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.float16, device_map="auto", trust_remote_code=True)
-
-# Function to generate embeddings for query
+# Function to generate embeddings
 def get_embedding(query):
-    return embedding_model.encode([query], convert_to_numpy=True)  # Use correct dimension
+    return embedding_model.encode([query], convert_to_numpy=True)  # Ensure this matches FAISS index
 
 # Function to retrieve recipes
 def retrieve_recipes(query, k=5):
@@ -66,7 +47,13 @@ def retrieve_recipes(query, k=5):
     if index is None or recipes is None:
         return []
     
-    query_embedding = get_embedding(query)  # Convert query to embedding
+    query_embedding = get_embedding(query)
+    
+    # Ensure dimensions match
+    if query_embedding.shape[1] != index.d:
+        st.error(f"Dimension mismatch: FAISS expects {index.d}, but got {query_embedding.shape[1]}.")
+        return []
+    
     _, indices = index.search(query_embedding, k)
     
     results = [recipes[i] for i in indices[0] if i < len(recipes)]
@@ -88,7 +75,7 @@ def generate_summary(recipe):
 # Streamlit UI
 st.set_page_config(page_title="Recipe Recommender App", layout="centered")
 st.title("🍜 Recipe Recommender (Japanese Cuisine Only)")
-st.write("Enter an ingredient or dish to get **Japanese recipe** recommendations from [AllRecipes](https://www.allrecipes.com/recipes/17491/world-cuisine/asian/japanese/main-dishes/).")
+st.write("Enter an ingredient or dish to get **Japanese recipe** recommendations.")
 
 query = st.text_input("Enter an ingredient or dish:")
 if query:
@@ -106,4 +93,4 @@ if query:
 
 # Footer
 st.markdown("---")
-st.markdown("Made with ❤️ using **Streamlit** & **FAISS** | Recipes sourced from [AllRecipes](https://www.allrecipes.com/recipes/17491/world-cuisine/asian/japanese/main-dishes/)")
+st.markdown("Made with ❤️ using **Streamlit** & **FAISS** | Recipes sourced from AllRecipes")
