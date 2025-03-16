@@ -32,7 +32,7 @@ def load_faiss_index():
 # ✅ Load a smaller LLM model
 @st.cache_resource()
 def load_llm():
-    model_name = "facebook/opt-1.3b"  # ✅ A much smaller model that fits in Streamlit Cloud memory
+    model_name = "facebook/opt-350m"  # ✅ More lightweight than OPT-1.3b
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
@@ -42,23 +42,20 @@ def load_llm():
     )
     return model, tokenizer
 
+# Load FAISS and LLM globally to avoid repeated loading
+index, recipes = load_faiss_index()
+model, tokenizer = load_llm()
+
 # Function to generate embeddings
 def get_embedding(query):
-    return embedding_model.encode([query], convert_to_numpy=True)
+    return embedding_model.encode([query], convert_to_numpy=True).reshape(1, -1)  # Ensure correct shape
 
 # Function to retrieve recipes
 def retrieve_recipes(query, k=5):
-    index, recipes = load_faiss_index()
     if index is None or recipes is None:
         return []
     
     query_embedding = get_embedding(query)
-    
-    # Ensure dimensions match
-    if query_embedding.shape[1] != index.d:
-        st.error(f"Dimension mismatch: FAISS expects {index.d}, but got {query_embedding.shape[1]}.")
-        return []
-    
     _, indices = index.search(query_embedding, k)
     
     results = [recipes[i] for i in indices[0] if i < len(recipes)]
@@ -66,7 +63,6 @@ def retrieve_recipes(query, k=5):
 
 # ✅ Function to generate LLM-based summaries
 def generate_summary(recipe):
-    model, tokenizer = load_llm()
     prompt = (
         f"Summarize this Japanese recipe: {recipe['title']}\n\n"
         f"Ingredients: {', '.join(recipe['ingredients'])}\n\n"
