@@ -1,7 +1,7 @@
 
 streamlit
 torch
-transformers
+transformers==4.38.2  # Use a stable version
 faiss-cpu
 numpy
 pandas
