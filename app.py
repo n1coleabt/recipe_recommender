@@ -27,7 +27,7 @@ if not os.path.exists("faiss_index.idx"):
 def load_faiss_index():
     try:
         index = faiss.read_index("faiss_index.idx")
-        with open("/content/recipes_metadata.json", "r") as f:
+        with open("recipes_metadata.json", "r") as f:
             recipes = json.load(f)
         return index, recipes
     except Exception as e:
