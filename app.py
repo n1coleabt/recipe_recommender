@@ -44,7 +44,7 @@ def load_llm():
 
 # Function to generate embeddings for query (Placeholder: replace with real embedding model)
 def get_embedding(query):
-    return np.random.rand(1, 768).astype("float32")  # Replace with actual embedding generation
+    return embedding_model.encode([query], convert_to_numpy=True)
 
 # Function to retrieve recipes
 def retrieve_recipes(query, k=5):
