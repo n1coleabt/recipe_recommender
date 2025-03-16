@@ -1,63 +1,61 @@
 import asyncio
 asyncio.set_event_loop(asyncio.new_event_loop())
-
 import streamlit as st
 from transformers import AutoModelForCausalLM, AutoTokenizer
-import torch
 import faiss
-import numpy as np
-import pandas as pd
-from sentence_transformers import SentenceTransformer
+import torch
+import json
 import os
 
-# Set Streamlit page config
-st.set_page_config(page_title="🍣 Japanese Recipe Recommender", layout="wide")
+# Load the FAISS index and recipe metadata
+@st.cache_resource()
+def load_faiss_index():
+    index = faiss.read_index("faiss_index.idx")
+    with open("recipes_metadata.json", "r") as f:
+        recipes = json.load(f)
+    return index, recipes
 
-# Title and description
-st.title("🍣 Japanese Recipe Recommender")
-st.write("Discover delicious **Japanese main dishes** from [AllRecipes](https://www.allrecipes.com/recipes/17491/world-cuisine/asian/japanese/main-dishes/). Enter an ingredient or dish to get personalized recommendations!")
-
-# Load the fine-tuned recipe model
-mmodel_name = "nabt1/fine_tuned_recipe_model"
-
-try:
+# Load LLM for generating summaries
+@st.cache_resource()
+def load_llm():
+    model_name = "mistralai/Mistral-7B-Instruct"
     tokenizer = AutoTokenizer.from_pretrained(model_name)
-    print("Tokenizer loaded successfully!")
-except Exception as e:
-    print(f"Error loading tokenizer: {e}")
-    
-# Load FAISS index and recipe texts
-try:
-    index = faiss.read_index("recipe_index.faiss")
-    recipe_texts = np.load("recipe_texts.npy", allow_pickle=True)
-except Exception as e:
-    st.error(f"Error loading FAISS index or recipe texts: {e}")
-    st.stop()
+    model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.float16, device_map="auto")
+    return model, tokenizer
 
-# Load embedding model
-embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
+# Function to retrieve recipes
+def retrieve_recipes(query, k=5):
+    index, recipes = load_faiss_index()
+    # Convert query to embedding (assuming you have a function for this)
+    query_embedding = get_embedding(query)  # Implement this
+    _, indices = index.search(query_embedding, k)
+    results = [recipes[i] for i in indices[0]]
+    return results
 
-# User input
-st.markdown("### 🔎 Search for a Japanese Dish")
-st.markdown("_Note: This recommender only provides recipes from the **[AllRecipes Japanese Main Dishes](https://www.allrecipes.com/recipes/17491/world-cuisine/asian/japanese/main-dishes/)** section._")
+# Function to generate LLM-based summaries
+def generate_summary(recipe):
+    model, tokenizer = load_llm()
+    prompt = f"""Summarize this Japanese recipe:
+    {recipe['title']}\n\nIngredients: {', '.join(recipe['ingredients'])}\n\nInstructions: {recipe['instructions']}"""
+    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+    outputs = model.generate(**inputs, max_length=150)
+    summary = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    return summary
 
-user_query = st.text_input("Enter an ingredient or dish:")
+# Streamlit UI
+st.set_page_config(page_title="Recipe Recommender App", layout="centered")
+st.title("🍜 Recipe Recommender (Japanese Cuisine Only)")
+st.write("Enter an ingredient or dish to get **Japanese recipe** recommendations from [AllRecipes](https://www.allrecipes.com/recipes/17491/world-cuisine/asian/japanese/main-dishes/).")
 
-if user_query:
-    # Convert input query to embedding
-    query_embedding = embedding_model.encode([user_query], convert_to_numpy=True)
-
-    # Search in FAISS
-    k = 5  # Number of results
-    D, I = index.search(query_embedding, k)
-
-    # Display results
-    if len(I[0]) > 0:
-        st.subheader("🍜 Recommended Japanese Recipes:")
-        for i in I[0]:
-            st.write(f"- {recipe_texts[i]}")
-    else:
-        st.warning("No matching Japanese recipes found. Try a different ingredient or dish!")
+query = st.text_input("Enter an ingredient or dish:")
+if query:
+    recipes = retrieve_recipes(query)
+    for recipe in recipes:
+        summary = generate_summary(recipe)
+        st.subheader(recipe['title'])
+        st.write("**Summary:**", summary)
+        st.write("**Ingredients:**", ", ".join(recipe['ingredients']))
+        st.write("[View Full Recipe]({})".format(recipe['url']))
 
 # Footer
 st.markdown("---")
