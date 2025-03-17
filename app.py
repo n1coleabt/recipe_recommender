@@ -81,14 +81,20 @@ def retrieve_recipes(query, k=5):
 
 # ✅ Function to generate LLM-based summaries
 def generate_summary(recipe):
+    title = recipe.get("title", "Unknown Recipe")  # ✅ Avoid KeyError
+    ingredients = recipe.get("ingredients", [])
+    instructions = recipe.get("instructions", "No instructions available.")
+
     prompt = (
-        f"Summarize this Japanese recipe: {recipe['title']}\n\n"
-        f"Ingredients: {', '.join(recipe['ingredients'])}\n\n"
-        f"Instructions: {recipe['instructions']}"
+        f"Summarize this Japanese recipe: {title}\n\n"
+        f"Ingredients: {', '.join(ingredients)}\n\n"
+        f"Instructions: {instructions}"
     )
 
+    model, tokenizer = load_llm()
     inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
     outputs = model.generate(**inputs, max_length=150)
+
     return tokenizer.decode(outputs[0], skip_special_tokens=True)
 
 # Streamlit UI
