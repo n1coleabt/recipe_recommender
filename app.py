@@ -94,28 +94,45 @@ def retrieve_recipes(query, k=5):
 
 # Function to generate LLM-based summaries
 def generate_summary(recipe):
-    title = recipe.get("title", "Unknown Recipe")  # ✅ Prevents KeyError
+    title = recipe.get("summary", "Unknown Recipe")  # Prevent KeyError
     ingredients = recipe.get("ingredients", [])
     instructions = recipe.get("instructions", "No instructions available.")
 
+    # 🔥 Truncate ingredients and instructions if too long
+    ingredients_str = ", ".join(ingredients)
+    instructions_str = instructions
+
+    max_ingredients_length = 200  # Limit ingredient length
+    max_instructions_length = 300  # Limit instructions
+
+    if len(ingredients_str) > max_ingredients_length:
+        ingredients_str = ingredients_str[:max_ingredients_length] + "..."
+    
+    if len(instructions_str) > max_instructions_length:
+        instructions_str = instructions_str[:max_instructions_length] + "..."
+
+    # Create prompt with truncated content
     prompt = (
         f"Summarize this Japanese recipe: {title}\n\n"
-        f"Ingredients: {', '.join(ingredients)}\n\n"
-        f"Instructions: {instructions}"
+        f"Ingredients: {ingredients_str}\n\n"
+        f"Instructions: {instructions_str}"
     )
 
+    # Tokenize and limit input size
     model, tokenizer = load_llm()
-    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+    inputs = tokenizer(prompt, return_tensors="pt", truncation=True, max_length=512).to(model.device)  # 🔥 Ensure input is within limits
 
+    # Generate text with adjusted parameters
     outputs = model.generate(
         **inputs,
-        max_length=100,
-        min_length=30,
+        max_length=75,  # Reduce max length
+        min_length=30,  # Ensure reasonable output length
         do_sample=True,
         temperature=0.7
     )
 
     return tokenizer.decode(outputs[0], skip_special_tokens=True)
+
 
 # Streamlit UI
 st.title("🍜 Recipe Recommender (Japanese Cuisine Only)")
