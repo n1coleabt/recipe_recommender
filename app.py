@@ -23,9 +23,17 @@ embedding_model = load_embedding_model()
 @st.cache_resource()
 def load_faiss_index():
     try:
-        index = faiss.read_index("faiss_index.idx")
-        with open("recipes_metadata.json", "r", encoding="utf-8") as f:
+        index_path = "faiss_index.idx"
+        metadata_path = "recipes_metadata.json"
+
+        print(f"Looking for FAISS index at: {os.path.abspath(index_path)}")
+        print(f"Looking for metadata at: {os.path.abspath(metadata_path)}")
+
+        index = faiss.read_index(index_path)
+
+        with open(metadata_path, "r", encoding="utf-8") as f:
             recipes = json.load(f)
+
         return index, recipes
     except Exception as e:
         st.error(f"Error loading FAISS index: {e}")
