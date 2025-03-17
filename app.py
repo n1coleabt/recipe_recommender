@@ -93,7 +93,14 @@ def generate_summary(recipe):
 
     model, tokenizer = load_llm()
     inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-    outputs = model.generate(**inputs, max_length=150)
+    outputs = model.generate(
+    **inputs,
+    max_length=100,  #  Reduce max length
+    min_length=30,   # Ensure reasonable output length
+    do_sample=True,  # Enable sampling for diversity
+    temperature=0.7  # Control randomness (lower = more deterministic)
+)
+
 
     return tokenizer.decode(outputs[0], skip_special_tokens=True)
 
