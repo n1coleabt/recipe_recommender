@@ -40,7 +40,7 @@ def load_faiss_index():
             df = pd.read_csv(csv_file)
 
             # Check if required columns exist
-            required_columns = {"summary", "ingredients", "instructions", "url"}
+            required_columns = {"title", "ingredients", "instructions", "url"}
             if not required_columns.issubset(df.columns):
                 st.error(f"Error: CSV must contain columns: {', '.join(required_columns)}")
                 return None, None
@@ -63,13 +63,13 @@ def load_faiss_index():
 # Load a smaller LLM model
 @st.cache_resource()
 def load_llm():
-    model_name = "facebook/opt-350m"  #  More lightweight than OPT-1.3b
+    model_name = "facebook/opt-350m"
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
         torch_dtype=torch.float16,
         device_map="auto",
-        low_cpu_mem_usage=True  # ✅ Prevents memory overload
+        low_cpu_mem_usage=True
     )
     return model, tokenizer
 
@@ -79,7 +79,7 @@ model, tokenizer = load_llm()
 
 # Function to generate embeddings
 def get_embedding(query):
-    return embedding_model.encode([query], convert_to_numpy=True).reshape(1, -1)  # Ensure correct shape
+    return embedding_model.encode([query], convert_to_numpy=True).reshape(1, -1)
 
 # Function to retrieve recipes
 def retrieve_recipes(query, k=5):
@@ -94,16 +94,17 @@ def retrieve_recipes(query, k=5):
 
 # Function to generate LLM-based summaries
 def generate_summary(recipe):
-    title = recipe.get("summary", "Unknown Recipe")  # Prevent KeyError
+    title = recipe.get("title", "Unknown Recipe")  # Ensure title exists
     ingredients = recipe.get("ingredients", [])
     instructions = recipe.get("instructions", "No instructions available.")
 
-    # 🔥 Truncate ingredients and instructions if too long
-    ingredients_str = ", ".join(ingredients)
-    instructions_str = instructions
+    # Ensure ingredients & instructions are strings
+    ingredients_str = ", ".join(ingredients) if isinstance(ingredients, list) else "No ingredients available."
+    instructions_str = instructions if isinstance(instructions, str) else "No instructions available."
 
-    max_ingredients_length = 200  # Limit ingredient length
-    max_instructions_length = 300  # Limit instructions
+    # Truncate ingredients and instructions
+    max_ingredients_length = 150  # Reduce length further
+    max_instructions_length = 250
 
     if len(ingredients_str) > max_ingredients_length:
         ingredients_str = ingredients_str[:max_ingredients_length] + "..."
@@ -120,19 +121,18 @@ def generate_summary(recipe):
 
     # Tokenize and limit input size
     model, tokenizer = load_llm()
-    inputs = tokenizer(prompt, return_tensors="pt", truncation=True, max_length=512).to(model.device)  # 🔥 Ensure input is within limits
+    inputs = tokenizer(prompt, return_tensors="pt", truncation=True, max_length=256).to(model.device)  # Further reduced max_length
 
     # Generate text with adjusted parameters
     outputs = model.generate(
         **inputs,
-        max_length=75,  # Reduce max length
-        min_length=30,  # Ensure reasonable output length
+        max_length=50,  # Reduce max length
+        min_length=20,  # Ensure reasonable output length
         do_sample=True,
         temperature=0.7
     )
 
     return tokenizer.decode(outputs[0], skip_special_tokens=True)
-
 
 # Streamlit UI
 st.title("🍜 Recipe Recommender (Japanese Cuisine Only)")
@@ -145,10 +145,10 @@ if query:
     if recipes:
         for recipe in recipes:
             summary = generate_summary(recipe)
-            st.subheader(recipe['title'])
+            st.subheader(recipe.get("title", "Unknown Recipe"))  # Safely get title
             st.write("**Summary:**", summary)
-            st.write("**Ingredients:**", ", ".join(recipe['ingredients']))
-            st.write(f"[View Full Recipe]({recipe['url']})")
+            st.write("**Ingredients:**", ", ".join(recipe.get("ingredients", ["No ingredients available."])))
+            st.write(f"[View Full Recipe]({recipe.get('url', '#')})")
     else:
         st.warning("No recipes found. Try a different ingredient or dish.")
 
