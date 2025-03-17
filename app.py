@@ -3,6 +3,7 @@ asyncio.set_event_loop(asyncio.new_event_loop())
 
 import streamlit as st
 import faiss
+import pandas as pd
 import numpy as np
 import torch
 import json
