@@ -26,20 +26,32 @@ def load_faiss_index():
     try:
         index = faiss.read_index("faiss_index.idx")
 
-        # Check if 'recipes_metadata.json' exists
-        if not os.path.exists("recipes_metadata.json"):
-            st.warning("`recipes_metadata.json` not found. Generating from CSV...")
+        # Ensure 'recipes_metadata.json' exists
+        json_file = "recipes_metadata.json"
+        if not os.path.exists(json_file):
+            st.warning(f"{json_file} not found. Generating from CSV...")
 
-            # Load CSV and create JSON
-            df = pd.read_csv("JPNmaindishes_cleaned.csv")
+            # Load CSV and check data
+            csv_file = "JPNmaindishes_cleaned.csv"
+            if not os.path.exists(csv_file):
+                st.error(f"Error: {csv_file} not found. Please upload it.")
+                return None, None
+
+            df = pd.read_csv(csv_file)
+
+            # Check if required columns exist
+            required_columns = {"summary", "ingredients", "instructions", "url"}
+            if not required_columns.issubset(df.columns):
+                st.error(f"Error: CSV must contain columns: {', '.join(required_columns)}")
+                return None, None
+
+            # Convert DataFrame to JSON
             recipes = df.to_dict(orient="records")
-
-            # Save JSON file
-            with open("recipes_metadata.json", "w", encoding="utf-8") as f:
+            with open(json_file, "w", encoding="utf-8") as f:
                 json.dump(recipes, f, indent=4)
 
-        # Load JSON after ensuring it exists
-        with open("recipes_metadata.json", "r", encoding="utf-8") as f:
+        # Load recipes JSON
+        with open(json_file, "r", encoding="utf-8") as f:
             recipes = json.load(f)
 
         return index, recipes
@@ -47,6 +59,7 @@ def load_faiss_index():
     except Exception as e:
         st.error(f"Error loading FAISS index: {e}")
         return None, None
+
 # Load a smaller LLM model
 @st.cache_resource()
 def load_llm():
@@ -80,8 +93,8 @@ def retrieve_recipes(query, k=5):
     return results
 
 # Function to generate LLM-based summaries
-def generate_summary(recipe):
-    title = recipe.get("title", "Unknown Recipe")  # Avoid KeyError
+ddef generate_summary(recipe):
+    title = recipe.get("title", "Unknown Recipe")  # ✅ Prevents KeyError
     ingredients = recipe.get("ingredients", [])
     instructions = recipe.get("instructions", "No instructions available.")
 
@@ -93,14 +106,14 @@ def generate_summary(recipe):
 
     model, tokenizer = load_llm()
     inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-    outputs = model.generate(
-    **inputs,
-    max_length=100,  #  Reduce max length
-    min_length=30,   # Ensure reasonable output length
-    do_sample=True,  # Enable sampling for diversity
-    temperature=0.7  # Control randomness (lower = more deterministic)
-)
 
+    outputs = model.generate(
+        **inputs,
+        max_length=100,
+        min_length=30,
+        do_sample=True,
+        temperature=0.7
+    )
 
     return tokenizer.decode(outputs[0], skip_special_tokens=True)
 
