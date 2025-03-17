@@ -10,6 +10,8 @@ import os
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from sentence_transformers import SentenceTransformer
 
+st.set_page_config(page_title="Recipe Recommender App", layout="centered")
+
 # Load Sentence Transformer Model (For FAISS Search)
 @st.cache_resource()
 def load_embedding_model():
@@ -74,7 +76,6 @@ def generate_summary(recipe):
     return tokenizer.decode(outputs[0], skip_special_tokens=True)
 
 # Streamlit UI
-st.set_page_config(page_title="Recipe Recommender App", layout="centered")
 st.title("🍜 Recipe Recommender (Japanese Cuisine Only)")
 st.write("Enter an ingredient or dish to get **Japanese recipe** recommendations.")
 
