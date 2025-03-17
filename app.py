@@ -66,12 +66,8 @@ def retrieve_recipes(query, k=5):
 # ✅ Function to generate LLM-based summaries
 def generate_summary(recipe):
     prompt = (
-        f"Summarize this Japanese recipe: {recipe['title']}
-
-"
-        f"Ingredients: {', '.join(recipe['ingredients'])}
-
-"
+        f"Summarize this Japanese recipe: {recipe['title']}\n\n"
+        f"Ingredients: {', '.join(recipe['ingredients'])}\n\n"
         f"Instructions: {recipe['instructions']}"
     )
 
