@@ -93,7 +93,7 @@ def retrieve_recipes(query, k=5):
     return results
 
 # Function to generate LLM-based summaries
-ddef generate_summary(recipe):
+def generate_summary(recipe):
     title = recipe.get("title", "Unknown Recipe")  # ✅ Prevents KeyError
     ingredients = recipe.get("ingredients", [])
     instructions = recipe.get("instructions", "No instructions available.")
