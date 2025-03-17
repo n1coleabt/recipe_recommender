@@ -1,25 +1,14 @@
 [
     {
-        "name": "Karaage (Japanese Fried Chicken)",
-        "summary": "The only karaage recipe you'll ever need. Learn two methods of frying that produce moist, flavorful, boneless, skinless Japanese fried chicken with a super-thin coating that's incredibly crispy and crunchy. Serve with lemon or lime wedges.",
+        "name": "Buffalo Chicken Sushi Roll",
+        "summary": "I made this Buffalo chicken sushi recipe for my wife, who is not into raw sushi fish. Now, the whole family is totally hooked on it!",
         "prep_time": NaN,
         "cook_time": NaN,
         "total_time": NaN,
         "servings": NaN,
-        "process": "Mix garlic, ginger, soy sauce, sake, mirin, sesame oil, black pepper, cayenne, sugar, and salt in a medium bowl. | Place chicken in the marinade and mix until thoroughly and evenly coated. Cover and refrigerate for 1 to 10 hours. | Set up your dredging station: Place a wire rack over a foil-lined baking sheet. Add potato starch to a wide, shallow bowl. | Remove chicken from the refrigerator. Stir to coat with marinade. Toss 2 or 3 pieces at a time in the potato starch until evenly coated. Shake off any excess starch and place chicken on the wire rack. Repeat to dredge remaining pieces. | Tap the rack on the baking sheet to remove any loose chunks of starch, then transfer the baking sheet and rack of chicken to the refrigerator for 15 to 30 minutes. | Heat oil in a deep fryer to 350 degrees F (175 degrees C). | Without crowding, lower chicken carefully into the hot oil in batches. Fry, tossing occasionally, until cooked through and the outside is crunchy and browned, 3 to 4 minutes. Transfer to a paper towel-lined plate to drain. Repeat with remaining chicken.\n\n \n\n\n\n\n\n \n Karaage Japanese Fried Chicken.\nChef John",
-        "ingredients": "1 clove garlic, finely grated | 1 tablespoon finely grated fresh ginger | 3 tablespoons soy sauce | 3 tablespoons sake | 1 tablespoon mirin | \u215b teaspoon sesame oil | \u00bc teaspoon ground black pepper | 1 pinch cayenne pepper | \u00bd teaspoon white sugar | \u00bc teaspoon kosher salt | 1 \u00bc pounds boneless, skinless chicken thighs, cut into 2-inch pieces | 1 cup potato starch | 1 quart canola oil, or as needed",
-        "url": "https://www.allrecipes.com/recipe/8325387/karaage-japanese-fried-chicken/"
-    },
-    {
-        "name": "Yaki Udon",
-        "summary": "Yaki Udon is a classic Japanese stir-fry dish with udon noodles and lots of vegetables in a soy-based sauce. Feel free to add meat or tofu.",
-        "prep_time": NaN,
-        "cook_time": NaN,
-        "total_time": NaN,
-        "servings": NaN,
-        "process": "Whisk together oyster sauce, soy sauce, mirin, rice vinegar, Worcestershire, sesame oil, sugar, Sriracha, and garlic in a small bowl; set aside. Remove root ends from scallions and discard. Chop whites and light greens into 2-inch pieces and quarter pieces lengthwise; set aside. Thinly slice remaining dark greens of scallions and reserve for garnish. | Heat oil in a large skillet or wok over medium-high heat. Add mushrooms in a single layer and cook, undisturbed, until browned on first side, about 3 minutes. Stir and continue to cook, stirring occasionally, until mushrooms are tender and golden brown on both sides, about 4 more minutes. Add bok choy, carrots, sliced whites and light greens of scallions, and 1/4 cup water to pan with mushrooms. Cook, stirring occasionally, until vegetables are just tender, about 3 minutes. | Add udon noodles and remaining 1/4 cup water and cook, gently separating noodles with tongs or spoon. Add reserved oyster sauce mixture and cook, stirring constantly, until noodles and vegetables are well-coated, about 1 minute. Divide among serving bowls and garnish with reserved sliced greens of scallions and optional garnishes. Serve immediately.",
-        "ingredients": "\u00bc cup oyster sauce | 3 tablespoons soy sauce | 2 tablespoons mirin | 1 tablespoon unseasoned rice vinegar | 2 teaspoons Worcestershire sauce | 2 teaspoons toasted sesame oil | 1 teaspoon packed light brown sugar | 1 teaspoon Sriracha sauce | 1 medium garlic, grated | 1 medium (5-oz.) bunch scallions | 2 tablespoons canola oil | 12 ounces sliced mixed wild mushrooms (such as cremini, oyster, and shiitake) (about 6 cups) | 2 medium heads baby bok choy, thinly sliced | 1 (10 ounce) package carrots, cut into match-stick size pieces | \u00bd cup water, divided | 1 (14 ounce) package pre-cooked udon noodles (such as KA-ME) | Optional garnishes: thinly sliced nori, cilantro, lime wedges, furikake seasoning",
-        "url": "https://www.allrecipes.com/recipe/8539106/yaki-udon/"
+        "process": "Combine chicken and hot sauce in a bowl; toss to coat. | Place 1 nori sheet onto a bamboo sushi rolling mat. Spread 1 cup rice onto nori, leaving a 1/2-inch strip along 1 edge. Place 1/4 each chicken, carrot, and celery in a line near bottom edge of rice. Roll nori sheet around rice and fillings, using the mat to help. Moisten remaining nori edge with a finger dipped in water; press to seal. Repeat with remaining nori, rice, chicken, carrot, and celery. | Slice each roll into 8 pieces using a sharp, wet knife. Top each piece with a dollop of mayonnaise and a small amount of onion.",
+        "ingredients": "8 ounces fully cooked breaded chicken breast tenderloins | \u00bc cup hot pepper sauce | 4 sheets nori (dry seaweed) | 4 cups cooked sushi rice | 1  carrot, peeled and cut into 4-inch matchsticks | 1  celery stalk, cut into 4-inch matchsticks | \u00bc cup spicy mayonnaise | \u00bc cup French-fried onions (such as French's)",
+        "url": "https://www.allrecipes.com/recipe/239021/buffalo-chicken-sushi-roll/"
     },
     {
         "name": "Okinawa Shoyu Pork",
@@ -44,70 +33,26 @@
         "url": "https://www.allrecipes.com/recipe/46543/tonkatsu/"
     },
     {
-        "name": "Authentic Yakisoba",
-        "summary": "This authentic yakisoba was taught to me by my host mother when I lived in Osaka, Japan. It is the real deal and my friends love it.",
+        "name": "Japanese Egg Salad Sandwich",
+        "summary": "This is my take on the Japanese egg salad sandwich (tamago sando) which is world-famous, plus I'm going to show you how to make a version of a mayonnaise so addictive, it literally has a cult following. If that wasn't enough, I'm also going to tease an upcoming video for the world's most critically-acclaimed milk bread.",
         "prep_time": NaN,
         "cook_time": NaN,
         "total_time": NaN,
         "servings": NaN,
-        "process": "Bring a large pot of water to a boil. Cook soba in boiling water, stirring occasionally, until noodles are tender yet firm to the bite, 5 to 8 minutes. Drain noodles and rinse with cold water. Set aside. | Heat oil in a wok over medium heat. Add pork and stir-fry with a pinch of salt and pepper, about 5 minutes. Transfer meat to a plate, reserving oil in wok. Add carrots, onion, ginger, and garlic to the wok and stir-fry for 3 to 4 minutes. | Add cabbage to the wok and stir-fry briefly, about 1 minute. Add drained soba noodles. Pour in 1/2 the yakisoba sauce and stir-fry until noodles and vegetables are covered with sauce, about 3 minutes. Return pork to the wok. Add additional sauce as desired. Remove from heat. | Garnish yakisoba with kizami nori and a small pile of beni shoga just before serving.",
-        "ingredients": "4 (8 ounce) packages buckwheat soba noodles | 2 tablespoons vegetable oil | 1 pound pork tenderloin, cut against the grain in thin strips | 2 cups carrots, cut into julienne strips | 1 medium onion, cut into julienne strips | 1 tablespoon freshly grated ginger | 3 cloves garlic, minced | \u00bd head napa cabbage, shredded | \u2154 cup yakisoba sauce | salt and ground black pepper to taste | 4 tablespoons pickled red ginger (beni shoga), or to taste | 4 tablespoons kizami nori (dried flaked aonori seaweed), or to taste",
-        "url": "https://www.allrecipes.com/recipe/272610/authentic-yakisoba/"
+        "process": "Place eggs in the bottom of a saucepan. Add 1/4 inch of water. Heat over medium-high heat and bring to a boil. Cover and steam for 11 minutes. Turn off the heat and drain water carefully; pour cold water over and let cool. | Mix mayonnaise, salt, sugar, mustard, hot sauce, lemon juice, and vinegar for Kewpie-style mayonnaise together. Cover with plastic wrap and refrigerate until needed. | Peel eggs. Mash in a shallow bowl with the side and back of a fork until desired texture is reached. Add salt, sugar, cayenne, heavy cream, and 3 tablespoons Kewpie-style mayonnaise. Stir to combine. Wrap and refrigerate until well chilled, at least 1 hour. Taste and adjust seasonings. | Butter bread slices and use 1/2 of the egg salad on each sandwich. Cut crusts off before serving if you're fancy.\n\n \n\n\n\n\n\n \n Chef John",
+        "ingredients": "4 large eggs | \u00bd cup mayonnaise | \u00bc teaspoon kosher salt | \u00be teaspoon white sugar | 1 teaspoon Dijon mustard | 3 dashes hot sauce, or to taste | 1 teaspoon freshly squeezed lemon juice | 2 teaspoons rice vinegar | \u00bd teaspoon kosher salt, or to taste | \u00bc teaspoon white sugar | 1 pinch cayenne pepper | 1 tablespoon heavy cream | 4 slices soft white bread | 1 tablespoon unsalted butter, softened",
+        "url": "https://www.allrecipes.com/recipe/283909/japanese-egg-salad-sandwich-tamago-sando/"
     },
     {
-        "name": "Grilled Chicken Teriyaki Skewers with Miso Ranch",
-        "summary": "A delicious recipe for teriyaki chicken skewers. If \"teri\" means \"shine,\" and \"yaki\" refers to grilling, then these chicken skewers are the perfect example of teriyaki. Marinated in soy sauce, sake, and mirin, the chicken is grilled to sweet, smoky perfection and dipped in a refreshing, herby miso \"ranch\" sauce that'll send your summer cookout guests into a frenzy. The only bottles not invited to this party are bottled teriyaki sauces! Garnish with sesame seeds if desired.",
+        "name": "Instant Pot Sushi Rice",
+        "summary": "This sushi rice recipe is made in an Instant Pot. This simple method always ensures perfectly cooked grains. I tested four different methods before deciding this was the best. Using the Manual function instead of the Rice setting gives the rice a tender bite and separated grains, yet it's still sticky enough to make compact sushi rolls. This recipe yields enough rice for 3 standard sushi rolls.",
         "prep_time": NaN,
         "cook_time": NaN,
         "total_time": NaN,
         "servings": NaN,
-        "process": "Soak bamboo skewers in water. | Prepare the chicken skewers: Cut chicken thighs in half lengthwise along the creases and halve the thicker portions to get 3 or 4 pieces each. Place chicken in a bowl. Pour in soy sauce, sake, mirin, brown sugar, green onions, ginger, and oil. Toss by hand until well combined and brown sugar is dissolved. Cover top in plastic wrap and marinate in the refrigerator for 2 to 6 hours. | Make the dressing: Combine mayonnaise, buttermilk, sour cream, and miso in a bowl. Add green onion, garlic, tarragon, dill, and chives. Season with black pepper and cayenne. Whisk dressing until thoroughly combined. | Thread chicken pieces onto skewers. Strain marinade into a saucepan and bring to a boil to make the glaze. | Preheat a grill for medium-high heat. Grill skewers, basting with some of the reserved marinade, until meat firms up and springs back to the touch, 4 to 5 minutes per side. | Serve skewers next to the miso ranch dressing and brush with reserved glaze.\n\n \n\n\n\n\n\n \n Chef John",
-        "ingredients": "12 bamboo skewers | 2 pounds skinless, boneless chicken thighs | \u00bd cup soy sauce | \u00bd cup sake | \u2153 cup mirin (Japanese sweet wine) | \u00bc cup brown sugar | 2 tablespoons minced green onions | 2 teaspoons finely grated ginger | 1 tablespoon vegetable oil | \u00be cup mayonnaise | \u2153 cup buttermilk | \u00bc cup sour cream | 1 tablespoon white miso paste, or to taste | 1 tablespoon minced green onion | 1 clove garlic, crushed | 1 tablespoon finely chopped fresh tarragon | 1 tablespoon finely chopped fresh dill | 1 tablespoon finely chopped fresh chives | freshly ground black pepper to taste | 1 pinch cayenne pepper",
-        "url": "https://www.allrecipes.com/recipe/273940/grilled-chicken-teriyaki-skewers-with-miso-ranch/"
-    },
-    {
-        "name": "Japanese Broiled Mackerel",
-        "summary": "A Japanese marinade sauce gives a lovely taste and texture to broiled mackerel in this Japanese mackerel recipe. Yellowtail, tuna, or salmon are also good in this recipe. Easy and delectable! Serve with a lemon slice or long white radish slice as a garnish.",
-        "prep_time": NaN,
-        "cook_time": NaN,
-        "total_time": NaN,
-        "servings": NaN,
-        "process": "Rinse fillets; pat dry with paper towels. | Mix together soy sauce, mirin, sugar, and fresh ginger in a medium bowl. Place fillets into marinade and let stand for at least 20 minutes. | Preheat the oven broiler or an outdoor grill for high heat. | Cook fillets in the preheated broiler, basting occasionally, until fish flakes easily with a fork, 5 to 8 minutes.",
-        "ingredients": "4  mackerel fillets | \u00bc cup soy sauce | \u00bc cup mirin (Japanese sweet wine) | 1 tablespoon white sugar | \u00bd tablespoon grated fresh ginger root",
-        "url": "https://www.allrecipes.com/recipe/29497/japanese-broiled-mackerel/"
-    },
-    {
-        "name": "Karaage (Japanese Fried Chicken) with Honey Mayoster Sauce",
-        "summary": "This karaage (Japanese fried chicken) with honey mayoster sauce recipe is very easy to make and my guests always enjoy it a lot! It can be served as an appetizer or over a bed of rice as a quick weekday dinner! I usually marinate it the night before to give it more flavor, but if it's a last-minute meal you are preparing, no worries because there's still dipping sauce! Serve it with hot with shredded lettuce and a lemon wedge.",
-        "prep_time": NaN,
-        "cook_time": NaN,
-        "total_time": NaN,
-        "servings": NaN,
-        "process": "Whisk 1 1/2 tablespoons soy sauce, 1 tablespoon honey, garlic, and ginger together in a large glass or ceramic bowl. Add chicken and toss to evenly coat. Cover the bowl with plastic wrap and marinate in the refrigerator for 8 hours to overnight. | Remove chicken from marinade and shake off excess. Discard remaining marinade. | Beat egg in a bowl until smooth. Add panko bread crumbs to a shallow bowl. Dip chicken into beaten egg. Lift up so excess egg drips back in the bowl. Press into panko until completely coated. Place the breaded chicken, unstacked, onto a plate. Repeat with remaining chicken. | Heat oil in a deep fryer or large saucepan to 350 degrees F (175 degrees C). Lower chicken carefully into the hot oil in batches. Fry until golden brown, about 5 minutes. Transfer to paper towels to drain. Repeat with remaining chicken. | Whisk Japanese mayonnaise, mirin, 2 tablespoons honey, Dijon mustard, and 1 tablespoon soy sauce together in a bowl; pour sauce over chicken.",
-        "ingredients": "1 \u00bd tablespoons low-sodium soy sauce | 1 tablespoon honey | 2 teaspoons minced garlic | 2 teaspoons minced fresh ginger | 1 pound skinless, boneless chicken thighs, cut into bite-sized pieces | 1  egg | 1 cup panko bread crumbs | vegetable oil for frying | \u00bd cup Japanese mayonnaise | 3 tablespoons mirin (Japanese sweet wine) | 2 tablespoons honey | 2 tablespoons Dijon mustard | 1 tablespoon low-sodium soy sauce",
-        "url": "https://www.allrecipes.com/recipe/258032/karaage-japanese-fried-chicken-with-honey-mayoster-sauce/"
-    },
-    {
-        "name": "Japanese Sweet Omelet",
-        "summary": "Tamagoyaki is a delicious, easy, and fun Japanese breakfast! Serve hot with shaved daikon (Japanese radish) and soy sauce.",
-        "prep_time": NaN,
-        "cook_time": NaN,
-        "total_time": NaN,
-        "servings": NaN,
-        "process": "Mix eggs, water, soy sauce, and sugar in a bowl with a fork until combined. | Heat a skillet over medium heat. Pour egg mixture into skillet and stir with a fork. Cook until omelet begins to set and liquid is no longer visible, 3 to 5 minutes. Fold in half twice.",
-        "ingredients": "2  eggs | 1 tablespoon water | 1 teaspoon soy sauce | 1 teaspoon white sugar",
-        "url": "https://www.allrecipes.com/recipe/254315/japanese-sweet-omelet/"
-    },
-    {
-        "name": "Chicken Katsu",
-        "summary": "Chicken katsu is Japanese-style fried chicken. This is my family recipe and can also be used to make tonkatsu by using pork cutlets instead of chicken. Serve with white rice and tonkatsu sauce.",
-        "prep_time": NaN,
-        "cook_time": NaN,
-        "total_time": NaN,
-        "servings": NaN,
-        "process": "Season chicken breasts on both sides with salt and pepper. Place flour, beaten egg, and panko crumbs into separate shallow dishes. Coat chicken breasts in flour, shaking off any excess; dip into egg, and then press into panko crumbs until well coated on both sides. | Heat oil in a large skillet over medium-high heat. Place chicken in the hot oil, and fry until golden brown, 3 or 4 minutes per side. Transfer to a paper towel-lined plate to drain.\n\n \n\n\n\n\n\n \n Mitsuha Kirigaija",
-        "ingredients": "4 skinless, boneless chicken breast halves - pounded to \u00bd-inch thickness | salt and pepper to taste | 2 tablespoons all-purpose flour | 1  egg, beaten | 1 cup panko bread crumbs | 1 cup oil for frying, or as needed",
-        "url": "https://www.allrecipes.com/recipe/72068/chicken-katsu/"
+        "process": "Place rice in the insert of a multi-functional pressure cooker (such as Instant Pot). Add enough water to cover and rinse rice, mixing it in a circular motion. Strain through a sieve. Repeat until water comes out clear, about five rinses total. Spread drained rice onto a clean cloth and let dry for 10 to 15 minutes. | Clean kombu gently with a damp towel, but do not remove the white powder, which is important for the umami flavor. Break off a small piece of kombu and place into a small saucepan. | Place remaining kombu into the Instant Pot with rice and 1 1/4 cups water. Close and lock the lid. Select high pressure according to manufacturer's instructions; set the timer for 2 minutes. Allow 10 to 15 minutes for pressure to build. | Release pressure on the Instant Pot using the natural-release method according to manufacturer's instructions, about 8 minutes. Release any additional pressure carefully using the quick-release method. Unlock and remove the lid. | While the pressure is releasing, add rice wine, hon mirin, sugar, and sea salt to the saucepan. Heat over low heat until sugar and salt have dissolved; do not boil. | Use a rice paddle to gently scrape rice into a glass or ceramic bowl; remove and discard kombu. | Remove and discard the smaller kombu piece from the vinegar mixture. Sprinkle vinegar mixture over rice and cut it in with the rice paddle. Stir until vinegar mixture is well incorporated and no lumps of rice remain. Allow to cool to room temperature, fanning the rice with a piece of cardboard if desired to speed up cooling.",
+        "ingredients": "1 cup Japanese sushi-style rice | 1 (2 inch) piece kombu (Japanese dried kelp) | 1 \u00bc cups water | 3 tablespoons Japanese rice wine | 1 tablespoon hon mirin (Japanese mirin) | \u00be tablespoon white sugar | \u00bd teaspoon sea salt",
+        "url": "https://www.allrecipes.com/recipe/278798/instant-pot-sushi-rice/"
     },
     {
         "name": "Air Fryer Tonkatsu",
@@ -121,92 +66,48 @@
         "url": "https://www.allrecipes.com/recipe/278809/air-fryer-tonkatsu/"
     },
     {
-        "name": "Japanese Shrimp Fried Rice with Yum Yum Sauce",
-        "summary": "Best shrimp fried rice I've ever made or had! The yum yum sauce tastes better if made the day before, so the flavors can marry.",
+        "name": "Cucumber and Avocado Sushi",
+        "summary": "Make avocado rolls at home with this easy vegetarian sushi recipe. Serve with wasabi, pickled ginger, and soy sauce.",
         "prep_time": NaN,
         "cook_time": NaN,
         "total_time": NaN,
         "servings": NaN,
-        "process": "Bring 3 cups water and rice to a boil in a saucepan. Reduce heat to medium-low, cover, and simmer until rice is tender and water has been absorbed, 20 to 25 minutes. Set aside and let cool. | Heat 2 tablespoons vegetable oil in a large, deep skillet over medium-high heat. Add onion and cook until soft and translucent, about 5 minutes. Stir in garlic and cook until fragrant, about 1 minute. Mix in cooked jasmine rice and frozen peas and carrots; fry until rice begins to brown, about 5 minutes. Add 2 tablespoons butter and stir to combine. Pour in eggs and cook until firm. Add oyster sauce, soy sauce, and 1/2 lemon juice; stir to combine. Season with salt and pepper. | Heat remaining 1 tablespoon vegetable oil in a separate pan over medium-high heat. Add shrimp and fry until they are bright pink on the outside and the meat is opaque, 2 to 3 minutes. Mix in remaining 2 tablespoons butter and lemon juice. Combine with fried rice mixture. | Combine mayonnaise, water, paprika, ginger paste, white sugar, garlic powder, salt, and pepper in a bowl to make the yum yum sauce. Stir well. Serve with the fried rice.",
-        "ingredients": "2 cups uncooked jasmine rice | 3 cups water | 3 tablespoons vegetable oil, divided | 1  sweet onion, chopped | 2 cloves garlic, crushed and minced | 1 (16 ounce) package frozen peas and carrots | 4 tablespoons butter, divided | 2  eggs | 4 tablespoons oyster sauce | 3 tablespoons soy sauce | 1  lemon, juiced, divided | salt and pepper to taste | 1 pound uncooked medium shrimp, peeled and deveined | 1 cup mayonnaise | 3 tablespoons water | 2 tablespoons paprika | 1 teaspoon ginger paste | 1 teaspoon white sugar | \u00bd teaspoon garlic powder | salt and pepper to taste",
-        "url": "https://www.allrecipes.com/recipe/272802/japanese-shrimp-fried-rice-with-yum-yum-sauce/"
+        "process": "Combine water and rice in a saucepan and bring to a boil. Cover, reduce the heat to low, and simmer until rice is tender and water has been absorbed, about 20 minutes. Remove from the heat, stir in vinegar and salt, and set aside to cool for at least 5 minutes. | Cover a bamboo sushi mat with plastic wrap to keep rice from sticking. Place one nori sheet over the plastic. Spread rice evenly onto nori sheet, leaving about a 1/2 inch uncovered at the bottom. Arrange cucumber and avocado across the center of the rice. Lift the mat, roll over cucumber and avocado once, and press down. Unroll, then roll again towards the uncovered end of the nori to make a long roll. Seal roll with a little water if necessary. Repeat to make remaining rolls. | Use a sharp, wet knife to slice each roll into 6 pieces.",
+        "ingredients": "1 \u00bc cups water | 1 cup uncooked glutinous white rice (sushi rice) | 3 tablespoons rice vinegar | 1 pinch salt | 4 sheets nori (dry seaweed) | \u00bd medium cucumber, sliced into thin strips | 1 medium avocado - peeled, pitted and sliced",
+        "url": "https://www.allrecipes.com/recipe/99204/cucumber-and-avocado-sushi/"
     },
     {
-        "name": "Miso Braised Pork",
-        "summary": "Japanese comfort food! The smell will draw you in!",
+        "name": "Tamagoyaki Bento Box",
+        "summary": "A traditional Japanese tamagoyaki bento box is a delicious lunch alternative to sandwiches and chips. The onigiri can be formed into cute shapes or animal figures to surprise your kids with a fun lunch.",
         "prep_time": NaN,
         "cook_time": NaN,
         "total_time": NaN,
         "servings": NaN,
-        "process": "Heat canola oil in a large Dutch oven over medium-high heat until hot. Sear pork slices until well browned on both sides, then remove. Stir in the garlic and ginger, cook until fragrant, about 30 seconds. Add the water, soy sauce, brown sugar, and miso; bring to a simmer, scraping the bottom of the pan to dissolve the caramelized juices. | Place pork into pot, add additional water if needed to cover pork with the sauce. Then, reduce heat to medium-low, cover, and simmer for 3 hours until the pork is tender, and the sauce has thickened.",
-        "ingredients": "1 tablespoon canola oil | 5 pounds pork butt (shoulder roast) cut into 2-inch slices | 2 tablespoons minced garlic | 1 teaspoon minced ginger | 2 cups water, more if needed | \u2153 cup soy sauce | \u2153 cup brown sugar | \u00be cup white (shiro) miso",
-        "url": "https://www.allrecipes.com/recipe/116066/miso-braised-pork/"
+        "process": "Rinse rice with cool water until the water runs clear; drain. Bring rice and 3/4 cup water to a boil in a pot; reduce heat. Simmer until water is absorbed, about 15 minutes. Cool 10 to 20 minutes. | Cut nori sheet into two 1-inch strips; reserve remaining sheet for tamagoyaki. | Form cooled rice into 4 equal portions using wet hands, keeping hands wet to keep rice from sticking. Create an indention in 1 rice portion using your thumb; fill indention with 1 teaspoon bonito flakes. Top with another rice portion to enclose onigiri. Form into an oval shape; wrap middle with 1 nori strip. Repeat to make a second onigiri with remaining rice portions and bonito flakes. Sprinkle white and black sesame seeds on top of onigiri. Place in a bento box. | Whisk eggs, mirin, and 1/8 teaspoon tamari together in a bowl; divide into 3 portions. Cut remaining nori sheet into four 1/2-inch strips. | Heat oil in a small saucepan or square tamagoyaki pan over medium-high heat. Add 1/3 egg mixture; cook until almost firm, 2 to 3 minutes, if omelet is too firm, it won't stick together very well. Slide flat omelet onto a plate. Add 4 nori strips to the pan with some space between each. | Add 1/3 egg mixture to the pan; cook until almost firm, 2 to 3 minutes. Roll up carefully in the pan with nori strips. Slide rolled omelet onto edge of first unrolled omelet. Repeat cooking with remaining 1/3 egg mixture, roll it up and slide on top of second omelet. Cool until cool enough to touch, about 5 minutes. | Roll entire layered omelet together with nori inside. Cut into 4 pieces. Place alongside onigiri in bento box. | Combine 2 tablespoons tamari, ginger, and wasabi paste in a bowl; transfer to a portable container and place into bento box. Add edamame and steamed broccoli to bento box.",
+        "ingredients": "\u00bd cup uncooked short-grain white rice | \u00be cup water | 1 sheet nori (dry seaweed), or as needed | 2 teaspoons bonito flakes, divided | 1 teaspoon white sesame seeds | 1 teaspoon black sesame seeds | 2 large eggs | 1 teaspoon mirin (Japanese sweet wine) | \u215b teaspoon tamari | 1 teaspoon vegetable oil | 2 tablespoons tamari | 1 teaspoon freshly grated ginger | \u215b teaspoon wasabi paste | \u00bd cup cooked shelled edamame | \u00bc cup steamed broccoli florets",
+        "url": "https://www.allrecipes.com/recipe/279390/tamagoyaki-bento-box/"
     },
     {
-        "name": "Miso and Soy Chilean Sea Bass",
-        "summary": "This Chilean sea bass recipe marinates the fish in a mirin and miso mixture with brown sugar and soy sauce. It is melt-in-your-mouth delicious! I had it at a restaurant in NYC, and recreated the recipe at home.",
+        "name": "Gyoza (Japanese Potstickers)",
+        "summary": "Gyoza are the Japanese version of jiaozi, or Chinese potstickers. This version is pan-fried but they work well deep-fried or steamed too.",
         "prep_time": NaN,
         "cook_time": NaN,
         "total_time": NaN,
         "servings": NaN,
-        "process": "Preheat the oven's broiler and set the oven rack about 6 inches from the heat source. Prop the oven door to remain slightly ajar. | Broil sea bass in the preheated oven until fish flakes easily with a fork, 7 to 9 minutes.",
-        "ingredients": "\u2153 cup sake | \u2153 cup mirin (Japanese sweet rice wine) | \u2153 cup miso paste | \u00bc cup packed brown sugar | 3 tablespoons soy sauce | 4 (4 ounce) fillets fresh sea bass, about 1 inch thick | 2 tablespoons chopped green onion",
-        "url": "https://www.allrecipes.com/recipe/190094/miso-and-soy-chilean-sea-bass/"
+        "process": "Prepare the potstickers: Combine ground pork, napa cabbage, green onions, egg, ginger, garlic, soy sauce, Sriracha, and sesame oil in a bowl. | Arrange gyoza wrappers on a flat work surface. Place 1 teaspoon of pork mixture in the middle of each wrapper. Wet edges with your finger or a brush. Fold up sides to form a semicircle; pinch edges to seal. | Heat oil in a heavy skillet over medium-high heat. Add 12 to 15 gyoza to the skillet. Cook until golden brown on the bottom, about 2 minutes. Pour in 1/2 cup water; cover and cook until water is absorbed, 5 to 7 minutes. Transfer gyoza to a plate. Repeat with remaining gyoza. | Make the dipping sauce: Mix soy sauce, rice vinegar, sesame oil, and Sriracha together. Serve dipping side alongside gyoza.",
+        "ingredients": "\u00bd pound ground pork | \u00bd head napa cabbage, shredded | 3  green onions, thinly sliced | 1 large egg | 1 (2 inch) piece fresh ginger, grated | 1 small clove garlic, minced | 1 tablespoon soy sauce | 1 teaspoon Sriracha sauce, or more to taste | \u00bc teaspoon sesame oil | 30  gyoza wrappers, or as needed | 1 tablespoon vegetable oil, or as needed | 1 cup water, divided | 2 tablespoons soy sauce | 2 tablespoons seasoned rice vinegar | 1 \u00bd teaspoons sesame oil | 1 dash Sriracha sauce, or to taste",
+        "url": "https://www.allrecipes.com/recipe/257373/gyoza-japanese-potstickers/"
     },
     {
-        "name": "Spicy Tuna Sushi Roll",
-        "summary": "A great tasting spicy sushi roll, for those who like extra pizzazz. You can use cooked or raw tuna to your preference to achieve great flavors. Great for a filling Japanese meal. Tastes great with a wasabi soy dip.",
+        "name": "Japanese Broiled Mackerel",
+        "summary": "A Japanese marinade sauce gives a lovely taste and texture to broiled mackerel in this Japanese mackerel recipe. Yellowtail, tuna, or salmon are also good in this recipe. Easy and delectable! Serve with a lemon slice or long white radish slice as a garnish.",
         "prep_time": NaN,
         "cook_time": NaN,
         "total_time": NaN,
         "servings": NaN,
-        "process": "Bring the rice, water, and vinegar to a boil in a saucepan over high heat. Reduce heat to medium-low, cover, and simmer until the rice is tender, and the liquid has been absorbed, 20 to 25 minutes. Let stand, covered, for about 10 minutes to absorb any excess water. Set rice aside to cool. | Lightly mix together the tuna, mayonnaise, chili powder, and wasabi paste in a bowl, breaking the tuna apart but not mashing it into a paste. | To roll the sushi, cover a bamboo sushi rolling mat with plastic wrap. Lay a sheet of nori, rough side up, on the plastic wrap. With wet fingers, firmly pat a thick, even layer of prepared rice over the nori, covering it completely. Place about 1 tablespoon each of diced cucumber, carrot, and avocado in a line along the bottom edge of the sheet, and spread a line of tuna mixture alongside the vegetables. | Pick up the edge of the bamboo rolling sheet, fold the bottom edge of the sheet up, enclosing the filling, and tightly roll the sushi into a thick cylinder. Once the sushi is rolled, wrap it in the mat and gently squeeze to compact it tightly. Cut each roll into 6 pieces, and refrigerate until served.",
-        "ingredients": "2 cups uncooked glutinous white rice | 2 \u00bd cups water | 1 tablespoon rice vinegar | 1 (5 ounce) can solid white tuna in water, drained | 1 tablespoon mayonnaise | 1 teaspoon chili powder | 1 teaspoon wasabi paste | 4 sheets nori (dry seaweed) | \u00bd  cucumber, finely diced | 1  carrot, finely diced | 1  avocado - peeled, pitted and diced",
-        "url": "https://www.allrecipes.com/recipe/190943/spicy-tuna-sushi-roll/"
-    },
-    {
-        "name": "Miso Salmon",
-        "summary": "This Japanese-style broiled miso salmon is an easy recipe I came up with at the request of my family. It tastes just like some we've had at Japanese restaurants. Serve with sticky white rice and a light salad.",
-        "prep_time": NaN,
-        "cook_time": NaN,
-        "total_time": NaN,
-        "servings": NaN,
-        "process": "Preheat the oven to 400 degrees F (200 degrees C). | Fill a large skillet with about 1 inch of water and bring to a boil. Poach fish just until cooked on the outside, about 2 minutes per side. Transfer fillets to a broiler pan. | Stir together miso paste, brown sugar, salad dressing, sake, water, rice vinegar, sesame seeds, and sesame oil in a small bowl. Spread over the tops of the salmon fillets. | Bake in the preheated oven until almost cooked through, about 15 minutes. Switch the oven to broil, and broil until the top is browned and bubbly, about 5 more minutes. Cut fillets into portions to serve.",
-        "ingredients": "2 (1 1/2-pound) salmon fillets, skin removed | 1 cup miso paste | \u00bd cup brown sugar | \u00bd cup prepared soy-ginger salad dressing | \u00bc cup sake | \u00bc cup water | 3 tablespoons seasoned rice vinegar | 2 tablespoons sesame seeds | 1 teaspoon sesame oil",
-        "url": "https://www.allrecipes.com/recipe/106227/miso-salmon/"
-    },
-    {
-        "name": "Japanese-Style Deep-Fried Shrimp",
-        "summary": "These deep-fried shrimp are coated with crispy panko crumbs to make the easiest, tastiest deep-fried shrimp ever!",
-        "prep_time": NaN,
-        "cook_time": NaN,
-        "total_time": NaN,
-        "servings": NaN,
-        "process": NaN,
-        "ingredients": "1 pound medium shrimp, peeled (tails left on) and deveined | \u00bd teaspoon salt | \u00bd teaspoon ground black pepper | \u00bd teaspoon garlic powder | 1 cup all-purpose flour | 1 teaspoon paprika | 2 large eggs, beaten | 1 cup panko crumbs | 1 quart vegetable oil for frying",
-        "url": "https://www.allrecipes.com/recipe/127500/japanese-style-deep-fried-shrimp/"
-    },
-    {
-        "name": "Spicy Yellowtail Sushi Roll",
-        "summary": "This spicy yellowtail sushi roll recipe topped with flying fish roe is a simple makizushi that has a little kick.",
-        "prep_time": NaN,
-        "cook_time": NaN,
-        "total_time": NaN,
-        "servings": NaN,
-        "process": "Rinse rice under cold running water until it runs clear. | Bring water and rice to a boil in a large saucepan. Reduce heat to a simmer; simmer for 10 minutes. Turn off heat, let rice sit without opening the lid for 20 minutes; the remaining steam continues to cook the rice. | Stir rice wine vinegar and sugar together in a small bowl until sugar mostly dissolved; stir into rice. Cool rice, 15 to 20 minutes. | Chop yellowtail into 1/4-inch cubes; add to a bowl. Stir in mayonnaise and Sriracha; set aside. Cover a bamboo sushi rolling mat with plastic wrap; set aside. | Lay 1 nori sheet on a work surface, shiny-side down. Place 1/4 rice on nori, spread evenly from edge to edge, about 1/4-inch thick. Flip nori onto the prepared plastic-covered mat. Place 1/4 each yellowtail mixture and cucumber in a line along one short edge. | Roll rice and nori sheet around filling, using the bamboo mat to help. Press roll tightly to form a uniform log. Spread 1/2 tablespoon tobiko in a long thin line across top of roll. Press roll with bamboo mat. Repeat with remaining nori sheets, rice, yellowtail mixture, cucumber, and tobiko. | Cover rolls with plastic wrap; press again with bamboo mat. Slice each roll into 8 pieces using a very sharp, wet, clean knife. Remove plastic wrap before serving.",
-        "ingredients": "3 cups water | 2 cups Japanese short-grain white rice | 3 tablespoons rice wine vinegar | 2 \u00bd tablespoons white sugar | 4 ounces yellowtail flounder | \u00bc cup Japanese mayonnaise (such as Kewpie) | 1 tablespoon Sriracha sauce | 4 sheets nori (dry seaweed) | \u00bc medium cucumber, peeled and julienned | 2 tablespoons tobiko (flying fish roe)",
-        "url": "https://www.allrecipes.com/recipe/283035/spicy-yellowtail-sushi-roll/"
-    },
-    {
-        "name": "Sukiyaki",
-        "summary": "Serve this simple Japanese beef sukiyaki stir-fry recipe over thin Japanese noodles or rice, if desired.",
-        "prep_time": NaN,
-        "cook_time": NaN,
-        "total_time": NaN,
-        "servings": NaN,
-        "process": "Heat oil in a large skillet or wok over medium-high heat. Brown beef in hot oil, then stir in soy sauce, MSG, broth, and sugar. Mix in onion and celery, and cook until tender. Stir in bamboo shoots, green onions, mushrooms, and water chestnuts. Reduce heat to medium, stir in cornstarch, and simmer until sauce is thickened.",
-        "ingredients": "1 tablespoon vegetable oil | 1 \u00bd pounds beef sirloin strips | \u2154 cup soy sauce | 2 teaspoons monosodium glutamate (MSG) | \u2153 cup chicken broth | \u2153 cup white sugar | 3 small onions, sliced | 2 cups chopped celery | 1 (14 ounce) can bamboo shoots, drained and chopped | 4  green onions, sliced | 1 (4.5 ounce) can mushrooms, drained | 1 (8 ounce) can water chestnuts, drained | 1 teaspoon cornstarch",
-        "url": "https://www.allrecipes.com/recipe/23053/sukiyaki/"
+        "process": "Rinse fillets; pat dry with paper towels. | Mix together soy sauce, mirin, sugar, and fresh ginger in a medium bowl. Place fillets into marinade and let stand for at least 20 minutes. | Preheat the oven broiler or an outdoor grill for high heat. | Cook fillets in the preheated broiler, basting occasionally, until fish flakes easily with a fork, 5 to 8 minutes.",
+        "ingredients": "4  mackerel fillets | \u00bc cup soy sauce | \u00bc cup mirin (Japanese sweet wine) | 1 tablespoon white sugar | \u00bd tablespoon grated fresh ginger root",
+        "url": "https://www.allrecipes.com/recipe/29497/japanese-broiled-mackerel/"
     },
     {
         "name": "Homemade Sushi Rolls",
@@ -218,5 +119,104 @@
         "process": "Put rice into a large deep bowl. Fill with cold water and rub rice together with hands until water turns milky white. Drain cloudy water, being careful not to pour out rice. Repeat three or four times until you can see rice through 3 inches of water; drain once more. | Transfer rice to a saucepan; add kombu and 3 cups water. Let stand 30 minutes. Cover; bring to a boil over high heat. Reduce heat to low; simmer 10 minutes. Remove from heat and let stand, covered, 5 minutes. | Meanwhile, stir together rice vinegar, sugar, and salt in a small bowl until dissolved. | Remove and discard kombu; stir in vinegar mixture until no lumps remain. Spread rice mixture onto a rimmed 9x13 baking sheet. [Spreading helps cool rice and prevents it from continuing to cook.] Let cool to room temperature. | Lay one sheet of nori on a sushi mat lined with plastic wrap; spread 1 cup of rice over nori with damp fingers, leaving a 1-inch border along one edge. Arrange desired fillings (see below) crosswise just off center of rice. Carefully lift filled edge of nori and roll over filling toward unfilled edge, tucking as you roll. Brush unfilled edge of nori with water; press to seal. Cut each roll into 8 pieces. Repeat with remaining nori, rice, and fillings. To make ahead, chill, covered, up to 4 hours.",
         "ingredients": "1 \u2153 cups sushi rice | 1 (4 inch) piece dashi kombu (dried kelp) | 3 cups water | 2 tablespoons rice wine | 2 tablespoons sugar | \u00be teaspoon salt | 4  nori seaweed sheets | desired fillings (see bottom of recipe)",
         "url": "https://www.allrecipes.com/recipe/8536667/homemade-sushi-rolls/"
+    },
+    {
+        "name": "Japanese Shrimp Fried Rice with Yum Yum Sauce",
+        "summary": "Best shrimp fried rice I've ever made or had! The yum yum sauce tastes better if made the day before, so the flavors can marry.",
+        "prep_time": NaN,
+        "cook_time": NaN,
+        "total_time": NaN,
+        "servings": NaN,
+        "process": "Bring 3 cups water and rice to a boil in a saucepan. Reduce heat to medium-low, cover, and simmer until rice is tender and water has been absorbed, 20 to 25 minutes. Set aside and let cool. | Heat 2 tablespoons vegetable oil in a large, deep skillet over medium-high heat. Add onion and cook until soft and translucent, about 5 minutes. Stir in garlic and cook until fragrant, about 1 minute. Mix in cooked jasmine rice and frozen peas and carrots; fry until rice begins to brown, about 5 minutes. Add 2 tablespoons butter and stir to combine. Pour in eggs and cook until firm. Add oyster sauce, soy sauce, and 1/2 lemon juice; stir to combine. Season with salt and pepper. | Heat remaining 1 tablespoon vegetable oil in a separate pan over medium-high heat. Add shrimp and fry until they are bright pink on the outside and the meat is opaque, 2 to 3 minutes. Mix in remaining 2 tablespoons butter and lemon juice. Combine with fried rice mixture. | Combine mayonnaise, water, paprika, ginger paste, white sugar, garlic powder, salt, and pepper in a bowl to make the yum yum sauce. Stir well. Serve with the fried rice.",
+        "ingredients": "2 cups uncooked jasmine rice | 3 cups water | 3 tablespoons vegetable oil, divided | 1  sweet onion, chopped | 2 cloves garlic, crushed and minced | 1 (16 ounce) package frozen peas and carrots | 4 tablespoons butter, divided | 2  eggs | 4 tablespoons oyster sauce | 3 tablespoons soy sauce | 1  lemon, juiced, divided | salt and pepper to taste | 1 pound uncooked medium shrimp, peeled and deveined | 1 cup mayonnaise | 3 tablespoons water | 2 tablespoons paprika | 1 teaspoon ginger paste | 1 teaspoon white sugar | \u00bd teaspoon garlic powder | salt and pepper to taste",
+        "url": "https://www.allrecipes.com/recipe/272802/japanese-shrimp-fried-rice-with-yum-yum-sauce/"
+    },
+    {
+        "name": "Japanese Curry Chicken",
+        "summary": "Unlike Indian or Thai curry, Japanese curry is more savory than spicy. This chicken recipe uses Golden Curry brand curry cubes that can be found in the Asian section of any grocery store. It's the definition of umami! Oishii desu ne!? (Delicious, isn't it?)",
+        "prep_time": NaN,
+        "cook_time": NaN,
+        "total_time": NaN,
+        "servings": NaN,
+        "process": "Place chicken in a large, deep skillet. Drizzle with olive oil and season with salt and pepper on both sides. Add 1/3 cup water to the skillet, cover, and cook over medium heat until no longer pink in the center and the juices run clear, about 20 minutes. | While chicken is cooking, pour 2 cups water into a microwave-safe bowl. Break curry sauce mix into pieces and add to water. Heat in the microwave on high for 3 minutes and 30 seconds; remove and stir until sauce mix is completely dissolved. | Remove chicken from the skillet. Cut into cubes, return to the skillet, and pour curry sauce over top. Stir in peas, potatoes, mushrooms, carrots, and onion. Bring to a boil, then reduce heat and simmer until vegetables are tender, about 30 minutes. | Meanwhile, bring remaining 3 cups water and rice to a boil in a medium saucepan. Reduce heat to medium-low, cover, and simmer until rice is tender and water has been absorbed, 20 to 25 minutes. | Scoop rice into bowls and serve curry chicken on top.",
+        "ingredients": "1 \u00bd pounds skinless, boneless chicken breast, or more to taste | 1 tablespoon olive oil, or as needed | salt and ground black pepper to taste | 5 \u2153 cups water, divided | 1 (7.75 ounce) package curry sauce mix (such as S&B Golden Curry) | 1 (15 ounce) can peas, drained | 5  new potatoes, halved | 1 (8 ounce) package sliced cremini mushrooms | 2 medium carrots, chopped | 1 medium onion, chopped | 2 cups jasmine rice (such as Mahatma)",
+        "url": "https://www.allrecipes.com/recipe/277861/japanese-curry-chicken/"
+    },
+    {
+        "name": "Air Fryer Chicken Katsu with Homemade Katsu Sauce",
+        "summary": "Air fryer chicken katsu that is crispy on the outside, tender and juicy on the inside. The sauce is a little bit sweet, a little bit tangy, and complements the chicken perfectly. Serve over rice if desired.",
+        "prep_time": NaN,
+        "cook_time": NaN,
+        "total_time": NaN,
+        "servings": NaN,
+        "process": NaN,
+        "ingredients": "\u00bd cup ketchup | 2 tablespoons soy sauce | 1 tablespoon brown sugar | 1 tablespoon sherry | 2 teaspoons Worcestershire sauce | 1 teaspoon minced garlic | 1 pound boneless skinless chicken breast, sliced in half horizontally | 1 pinch salt and ground black pepper to taste | 2 large eggs, beaten | 1 \u00bd cups panko bread crumbs | cooking spray",
+        "url": "https://www.allrecipes.com/recipe/278708/air-fryer-chicken-katsu-with-homemade-katsu-sauce/"
+    },
+    {
+        "name": "Teriyaki Rib Eye Steaks",
+        "summary": "Great Japanese teriyaki-style marinated ribeye steak with a from-scratch teriyaki sauce.",
+        "prep_time": NaN,
+        "cook_time": NaN,
+        "total_time": NaN,
+        "servings": NaN,
+        "process": "Whisk soy sauce, water, sugar, honey, Worcestershire sauce, vinegar, olive oil, onion powder, garlic powder, and ground ginger together in a large glass or ceramic bowl. Pierce steaks several times with a fork. Add steaks to bowl; toss to evenly coat. Cover the bowl with plastic wrap and marinate in the refrigerator at least 2 hours. | Cook steaks in a hot skillet, wok, or hibachi over medium heat, 7 minutes per side for medium. An instant-read thermometer inserted into the center should read 140 degrees F (60 degrees C).",
+        "ingredients": "2 tablespoons soy sauce | 2 tablespoons water | 1 tablespoon white sugar | 1 \u00bd teaspoons honey | 1 \u00bd teaspoons Worcestershire sauce | 1 \u00bc teaspoons distilled white vinegar | 1 teaspoon olive oil | \u00bc teaspoon onion powder | \u00bc teaspoon garlic powder | \u215b teaspoon ground ginger | 2 (6 ounce) lean beef rib eye steaks",
+        "url": "https://www.allrecipes.com/recipe/107586/teriyaki-rib-eye-steaks/"
+    },
+    {
+        "name": "Spicy Tuna Rolls",
+        "summary": "Even if you're new to sushi making, this recipe for spicy tuna rolls is easy to make at home.",
+        "prep_time": NaN,
+        "cook_time": NaN,
+        "total_time": NaN,
+        "servings": NaN,
+        "process": "Cut off the bottom quarter of each nori sheet; reserve for another use. | Combine chopped tuna, mayonnaise, green onions, and hot sauce in a bowl. | Center 1 sheet of nori on a bamboo sushi mat. Wet your hands. Spread a thin layer of rice on the nori using your hands; press into a thin layer, leaving a 1/2-inch space at the bottom edge. Sprinkle with sesame seeds. Arrange 1/4 of the tuna mixture in a line across the rice, about 1/3 of the way down from the top of the sheet. | Wet the uncovered edge of the nori. Lift the top end of the mat and firmly roll it over the ingredients. Roll it forward to make a complete roll. Repeat with remaining ingredients. | Slice the rolls into 3/4-inch pieces using a wet knife. Serve immediately or refrigerate until serving.",
+        "ingredients": "4 sheets nori (dry seaweed) | \u00bd pound sashimi-grade tuna, finely chopped | 4 tablespoons mayonnaise | 2  green onions, chopped | 1 tablespoon hot chile sauce | 2 \u00bd cups prepared sushi rice | 1 tablespoon sesame seeds",
+        "url": "https://www.allrecipes.com/recipe/279434/spicy-tuna-rolls/"
+    },
+    {
+        "name": "Cream Cheese and Crab Sushi Rolls",
+        "summary": "This crab sushi roll with imitation crabmeat recipe is delicious and surprisingly simple to make. Sushi is expensive to buy at the supermarket, so making your own will save you tons of money. My husband is a sushi freak! I make this for him all the time.",
+        "prep_time": NaN,
+        "cook_time": NaN,
+        "total_time": NaN,
+        "servings": NaN,
+        "process": NaN,
+        "ingredients": "1 cup uncooked white rice | 2 cups water | 2 tablespoons rice vinegar | 1 teaspoon salt | 2 sheets nori seaweed sheets | \u00bc  cucumber, peeled and sliced lengthwise | 2 pieces imitation crab legs | \u00bd (3 ounce) package cream cheese, sliced | 1 teaspoon minced fresh ginger root",
+        "url": "https://www.allrecipes.com/recipe/169856/cream-cheese-and-crab-sushi-rolls/"
+    },
+    {
+        "name": "Japanese Curry",
+        "summary": "Japanese curry is different from Indian or Thai curries. It is more of a brown stew and it can be mild or spicy, depending on your tastes. It can be served over white rice or with udon noodles.\nThis recipe is very flexible; it can easily be made for more or less people.",
+        "prep_time": NaN,
+        "cook_time": NaN,
+        "total_time": NaN,
+        "servings": NaN,
+        "process": "Heat oil in a 6-quart pot over medium-high heat. Add beef and saute until brown, 5 to 7 minutes. Add onions and cook until starting to soften, about 3 minutes. Add ketchup and Worcestershire sauce. Stir to coat. Add cayenne pepper. Pour in water to cover mixture by 1 or 2 inches. Add carrots and bouillon. | Simmer, skimming fat off the surface of the broth as needed, for 30 minutes. Add potatoes. Stir in 1 package of curry roux and let dissolve; add remaining curry as needed to achieve desired thickness. Continue simmering until beef and vegetables are tender, about 30 minutes more.",
+        "ingredients": "1 tablespoon vegetable oil, or more as needed | 1 \u00be pounds beef chuck, cut into 2-inch cubes | 3  onions, quartered | 1 tablespoon ketchup | 1 \u00bd teaspoons Worcestershire sauce | 1 pinch cayenne pepper, or to taste (Optional) | water to cover | 4  carrots, cut into 2-inch pieces | 1 cube chicken bouillon (Optional) | 3 medium potatoes, cut into 3-inch chunks | 1 \u00bd (3.5 ounce) containers Japanese curry roux, or more to taste",
+        "url": "https://www.allrecipes.com/recipe/274077/japanese-curry/"
+    },
+    {
+        "name": "Yakisoba Chicken",
+        "summary": "Japanese buckwheat flour noodles with chicken at their best! Noodles can be found in an Asian foods market.",
+        "prep_time": NaN,
+        "cook_time": NaN,
+        "total_time": NaN,
+        "servings": NaN,
+        "process": "In a large skillet combine sesame oil, canola oil and chili paste; stir-fry 30 seconds. Add garlic and stir fry an additional 30 seconds. Add chicken and 1/4 cup of the soy sauce and stir fry until chicken is no longer pink, about 5 minutes. Remove mixture from pan, set aside, and keep warm. | In the emptied pan combine the onion, cabbage, and carrots. Stir-fry until cabbage begins to wilt, 2 to 3 minutes. Stir in the remaining soy sauce, cooked noodles, and the chicken mixture to pan and mix to blend. Serve and enjoy!",
+        "ingredients": "\u00bd teaspoon sesame oil | 1 tablespoon canola oil | 2 tablespoons chile paste | 2 cloves garlic, chopped | 4  skinless, boneless chicken breast halves - cut into 1 inch cubes | \u00bd cup soy sauce | 1  onion, sliced lengthwise into eighths | \u00bd medium head cabbage, coarsely chopped | 2  carrots, coarsely chopped | 8 ounces soba noodles, cooked and drained",
+        "url": "https://www.allrecipes.com/recipe/8628/yakisoba-chicken/"
+    },
+    {
+        "name": "Smoked Salmon Sushi Roll",
+        "summary": "Homemade salmon roll made with sushi rice, nori, and smoked salmon. This is a very basic and easy recipe for making sushi. It might take a while to learn how to make a perfect roll, but you'll have fun trying! Add wasabi (Japanese horseradish) for a good kick!",
+        "prep_time": NaN,
+        "cook_time": NaN,
+        "total_time": NaN,
+        "servings": NaN,
+        "process": "Soak rice for 4 hours. Drain rice and cook in a rice cooker with 2 cups of water. Rice must be slightly dry as vinegar will be added later. | Immediately after rice is cooked, mix in rice wine vinegar; spread rice on a plate until completely cool. | Place 1 sheet of seaweed on a bamboo mat; press a thin layer of cool rice on seaweed, leaving at least a 1/2 inch top and bottom edge of the seaweed uncovered. This is for easier sealing later. Dot some wasabi on rice; arrange smoked salmon, cucumber, and avocado on rice about 1 inch away from the bottom edge of seaweed. | Slightly wet the top edge of seaweed; roll up tightly from the bottom to the top edge with the help of the bamboo mat. Cut salmon roll into 8 equal pieces and serve. Repeat for other rolls.",
+        "ingredients": "2 cups Japanese sushi rice | 6 tablespoons rice wine vinegar | 6 sheets nori (dry seaweed) | 2 tablespoons wasabi paste | 8 ounces smoked salmon, cut into long strips | 1  cucumber, peeled and sliced | 1  avocado - peeled, pitted and sliced",
+        "url": "https://www.allrecipes.com/recipe/19511/smoked-salmon-sushi-roll/"
     }
 ]

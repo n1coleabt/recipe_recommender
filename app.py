@@ -65,13 +65,16 @@ def load_faiss_index():
 def load_llm():
     model_name = "facebook/opt-350m"
     tokenizer = AutoTokenizer.from_pretrained(model_name)
+
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
-        torch_dtype=torch.float16,
+        torch_dtype=torch.float16,  # Enables lower precision for reduced memory usage
         device_map="auto",
-        low_cpu_mem_usage=True
+        offload_folder="./offload"  # Add this line to specify an offload folder
     )
+
     return model, tokenizer
+
 
 # Load FAISS and LLM globally to avoid repeated loading
 index, recipes = load_faiss_index()
@@ -89,50 +92,48 @@ def retrieve_recipes(query, k=5):
     query_embedding = get_embedding(query)
     _, indices = index.search(query_embedding, k)
 
+    # Retrieve matching recipes
     results = [recipes[i] for i in indices[0] if i < len(recipes)]
+    
     return results
 
-# Function to generate LLM-based summaries
+# Summary Generator
 def generate_summary(recipe):
-    title = recipe.get("title", "Unknown Recipe")  # Ensure title exists
-    ingredients = recipe.get("ingredients", [])
-    instructions = recipe.get("instructions", "No instructions available.")
+    title = recipe.get("name", "Unknown Recipe")  
+    summary_raw = recipe.get("summary", "").strip()
+    if not summary_raw:
+        summary_raw = "No summary available."
 
-    # Ensure ingredients & instructions are strings
-    ingredients_str = ", ".join(ingredients) if isinstance(ingredients, list) else "No ingredients available."
-    instructions_str = instructions if isinstance(instructions, str) else "No instructions available."
-
-    # Truncate ingredients and instructions
-    max_ingredients_length = 150  # Reduce length further
-    max_instructions_length = 250
-
-    if len(ingredients_str) > max_ingredients_length:
-        ingredients_str = ingredients_str[:max_ingredients_length] + "..."
+    ingredients_raw = recipe.get("ingredients", "No ingredients available.")
     
-    if len(instructions_str) > max_instructions_length:
-        instructions_str = instructions_str[:max_instructions_length] + "..."
+    instructions_raw = recipe.get("process", "")
+    if not isinstance(instructions_raw, str):  
+        instructions_raw = str(instructions_raw)
+    instructions_raw = instructions_raw.strip()
 
-    # Create prompt with truncated content
-    prompt = (
-        f"Summarize this Japanese recipe: {title}\n\n"
-        f"Ingredients: {ingredients_str}\n\n"
-        f"Instructions: {instructions_str}"
-    )
+    if not instructions_raw or instructions_raw.lower() in ["nan", "none", "null"]:  
+        instructions_raw = "No instructions provided in the dataset."
 
-    # Tokenize and limit input size
-    model, tokenizer = load_llm()
-    inputs = tokenizer(prompt, return_tensors="pt", truncation=True, max_length=256).to(model.device)  # Further reduced max_length
+    if isinstance(ingredients_raw, str):
+        ingredients_list = ingredients_raw.split(" | ")  
+    elif isinstance(ingredients_raw, list) and all(isinstance(i, str) and len(i) > 1 for i in ingredients_raw):
+        ingredients_list = ingredients_raw  
+    else:
+        ingredients_list = ["No ingredients available."]
 
-    # Generate text with adjusted parameters
-    outputs = model.generate(
-        **inputs,
-        max_length=50,  # Reduce max length
-        min_length=20,  # Ensure reasonable output length
-        do_sample=True,
-        temperature=0.7
-    )
+    # Format ingredients properly
+    ingredients_str = "\n".join([f"- {ing.strip()}" for ing in ingredients_list if len(ing.strip()) > 1])
 
-    return tokenizer.decode(outputs[0], skip_special_tokens=True)
+    # Format instructions step-by-step
+    instructions_str = "\n".join([f"{i+1}. {step.strip()}" for i, step in enumerate(instructions_raw.split(" | ")) if step.strip()])
+
+    # Return formatted content
+    return f"\n{summary_raw}\n\n**Ingredients:**\n{ingredients_str}\n\n**Instructions:**\n{instructions_str}"
+
+
+
+
+
 
 # Streamlit UI
 st.title("🍜 Recipe Recommender (Japanese Cuisine Only)")
@@ -145,13 +146,22 @@ if query:
     if recipes:
         for recipe in recipes:
             summary = generate_summary(recipe)
-            st.subheader(recipe.get("title", "Unknown Recipe"))  # Safely get title
+            st.subheader(recipe.get("name", "Unknown Recipe"))  # Safely get title
             st.write("**Summary:**", summary)
-            st.write("**Ingredients:**", ", ".join(recipe.get("ingredients", ["No ingredients available."])))
+            # Retrieve and format ingredients correctly
+            ingredients_raw = recipe.get("ingredients", "No ingredients available.")
+            if isinstance(ingredients_raw, str):
+                ingredients_list = ingredients_raw.split(" | ")  # Properly split string
+            elif isinstance(ingredients_raw, list):
+                ingredients_list = [i.strip() for i in ingredients_raw if len(i.strip()) > 1]  # Ensure clean formatting
+            else:
+                ingredients_list = ["No ingredients available."]
+
+
             st.write(f"[View Full Recipe]({recipe.get('url', '#')})")
     else:
         st.warning("No recipes found. Try a different ingredient or dish.")
 
 # Footer
 st.markdown("---")
-st.markdown("Made with ❤️ using **Streamlit** & **FAISS** | Recipes sourced from AllRecipes")
+st.markdown("Recipes sourced from AllRecipes")
