@@ -23,22 +23,29 @@ embedding_model = load_embedding_model()
 @st.cache_resource()
 def load_faiss_index():
     try:
-        index_path = "faiss_index.idx"
-        metadata_path = "recipes_metadata.json"
+        index = faiss.read_index("faiss_index.idx")
 
-        print(f"Looking for FAISS index at: {os.path.abspath(index_path)}")
-        print(f"Looking for metadata at: {os.path.abspath(metadata_path)}")
+        # ✅ Check if 'recipes_metadata.json' exists
+        if not os.path.exists("recipes_metadata.json"):
+            st.warning("`recipes_metadata.json` not found. Generating from CSV...")
 
-        index = faiss.read_index(index_path)
+            # ✅ Load CSV and create JSON
+            df = pd.read_csv("JPNmaindishes_cleaned.csv")
+            recipes = df.to_dict(orient="records")
 
-        with open(metadata_path, "r", encoding="utf-8") as f:
+            # ✅ Save JSON file
+            with open("recipes_metadata.json", "w", encoding="utf-8") as f:
+                json.dump(recipes, f, indent=4)
+
+        # ✅ Load JSON after ensuring it exists
+        with open("recipes_metadata.json", "r", encoding="utf-8") as f:
             recipes = json.load(f)
 
         return index, recipes
+
     except Exception as e:
         st.error(f"Error loading FAISS index: {e}")
         return None, None
-
 # ✅ Load a smaller LLM model
 @st.cache_resource()
 def load_llm():
