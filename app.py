@@ -94,30 +94,30 @@ def retrieve_recipes(query, k=5):
 
     # Retrieve matching recipes
     results = [recipes[i] for i in indices[0] if i < len(recipes)]
-    
+
     return results
 
 # Summary Generator
 def generate_summary(recipe):
-    title = recipe.get("name", "Unknown Recipe")  
+    title = recipe.get("name", "Unknown Recipe")
     summary_raw = recipe.get("summary", "").strip()
     if not summary_raw:
         summary_raw = "No summary available."
 
     ingredients_raw = recipe.get("ingredients", "No ingredients available.")
-    
+
     instructions_raw = recipe.get("process", "")
-    if not isinstance(instructions_raw, str):  
+    if not isinstance(instructions_raw, str):
         instructions_raw = str(instructions_raw)
     instructions_raw = instructions_raw.strip()
 
-    if not instructions_raw or instructions_raw.lower() in ["nan", "none", "null"]:  
+    if not instructions_raw or instructions_raw.lower() in ["nan", "none", "null"]:
         instructions_raw = "No instructions provided in the dataset."
 
     if isinstance(ingredients_raw, str):
-        ingredients_list = ingredients_raw.split(" | ")  
+        ingredients_list = ingredients_raw.split(" | ")
     elif isinstance(ingredients_raw, list) and all(isinstance(i, str) and len(i) > 1 for i in ingredients_raw):
-        ingredients_list = ingredients_raw  
+        ingredients_list = ingredients_raw
     else:
         ingredients_list = ["No ingredients available."]
 
@@ -130,13 +130,8 @@ def generate_summary(recipe):
     # Return formatted content
     return f"\n{summary_raw}\n\n**Ingredients:**\n{ingredients_str}\n\n**Instructions:**\n{instructions_str}"
 
-
-
-
-
-
 # Streamlit UI
-st.title("🍜 Recipe Recommender with RAG (Japanese Main Dishes)")
+st.title("🍜 Recipe Recommender (Japanese Cuisine Only)")
 st.write("Enter an ingredient or dish to get **Japanese recipe** recommendations.")
 
 query = st.text_input("Enter an ingredient or dish:")
@@ -145,10 +140,7 @@ if query:
 
     if recipes:
         for recipe in recipes:
-            summary = generate_summary(recipe)
-            st.subheader(recipe.get("name", "Unknown Recipe"))  # Safely get title
-            st.write("**Summary:**", summary)
-            # Retrieve and format ingredients correctly
+            # Check if ingredients are available
             ingredients_raw = recipe.get("ingredients", "No ingredients available.")
             if isinstance(ingredients_raw, str):
                 ingredients_list = ingredients_raw.split(" | ")  # Properly split string
@@ -157,8 +149,14 @@ if query:
             else:
                 ingredients_list = ["No ingredients available."]
 
-
-            st.write(f"[View Full Recipe]({recipe.get('url', '#')})")
+            # If no ingredients are found, display a message
+            if not ingredients_list or all(ing.strip() == "" for ing in ingredients_list):
+                st.warning("No ingredients found for this dish.")
+            else:
+                summary = generate_summary(recipe)
+                st.subheader(recipe.get("name", "Unknown Recipe"))  # Safely get title
+                st.write("**Summary:**", summary)
+                st.write(f"[View Full Recipe]({recipe.get('url', '#')})")
     else:
         st.warning("No recipes found. Try a different ingredient or dish.")
 
