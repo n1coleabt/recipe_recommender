@@ -198,4 +198,4 @@ if query:
 
 # Footer
 st.markdown("---")
-st.markdown("Recipes sourced from AllRecipes)
+st.markdown("Recipes sourced from AllRecipes")
