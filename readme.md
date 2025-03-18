@@ -87,7 +87,7 @@ Once the installation is complete, you can run the project using the following s
 You can also access the Recipe Recommender System directly on Streamlit Cloud without needing to install or run anything locally. The app is already deployed and ready to use at the following link:
 
 Access the Live App:
-👉 Recipe Recommender on Streamlit Cloud
+👉 https://reciperecommender-rtbnb43pivvsozrtt6wdxr.streamlit.app/#7c777908 
 
 How to Use:
 Open the link above in your web browser.
