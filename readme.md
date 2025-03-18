@@ -60,6 +60,7 @@ To run this project, you'll need to set up your environment and install the requ
 4. **Download Pre-trained Models**:
    - The project uses a fine-tuned GPT-2 model and FAISS index. Ensure these are downloaded and placed in the appropriate directories.
    - You can download the models from the Hugging Face Hub or generate them by running the provided scripts.
+   -  https://huggingface.co/nabt1/fine_tuned_recipe_model/tree/main   
 
 ---
 
