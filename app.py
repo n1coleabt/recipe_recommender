@@ -40,7 +40,7 @@ def load_faiss_index():
             df = pd.read_csv(csv_file)
 
             # Check if required columns exist
-            required_columns = {"name", "ingredients", "process", "url"}  # Ensure "name" is included
+            required_columns = {"title", "ingredients", "instructions", "url"}
             if not required_columns.issubset(df.columns):
                 st.error(f"Error: CSV must contain columns: {', '.join(required_columns)}")
                 return None, None
@@ -48,7 +48,7 @@ def load_faiss_index():
             # Convert DataFrame to JSON
             recipes = df.to_dict(orient="records")
             with open(json_file, "w", encoding="utf-8") as f:
-                json.dump(recipes, f, indent=4, ensure_ascii=False)  # Ensure Unicode is preserved
+                json.dump(recipes, f, indent=4)
 
         # Load recipes JSON
         with open(json_file, "r", encoding="utf-8") as f:
@@ -99,7 +99,7 @@ def retrieve_recipes(query, k=5):
 
 # Summary Generator
 def generate_summary(recipe):
-    title = recipe.get("name", "Unknown Recipe")  # Safely get the recipe name
+    title = recipe.get("name", "Unknown Recipe")
     summary_raw = recipe.get("summary", "").strip()
     if not summary_raw:
         summary_raw = "No summary available."
