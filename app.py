@@ -48,7 +48,7 @@ def load_faiss_index():
             # Convert DataFrame to JSON
             recipes = df.to_dict(orient="records")
             with open(json_file, "w", encoding="utf-8") as f:
-                json.dump(recipes, f, indent=4)
+                json.dump(recipes, f, indent=4, ensure_ascii=False)  # Ensure Unicode is preserved
 
         # Load recipes JSON
         with open(json_file, "r", encoding="utf-8") as f:
