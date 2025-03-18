@@ -84,29 +84,19 @@ Once the installation is complete, you can run the project using the following s
 ---
 
 ## Running on Streamlit Cloud (RECOMMENDED)
+You can also access the Recipe Recommender System directly on Streamlit Cloud without needing to install or run anything locally. The app is already deployed and ready to use at the following link:
 
-You can also deploy this project on **Streamlit Cloud** for easy access and sharing. Here's how:
+Access the Live App:
+👉 Recipe Recommender on Streamlit Cloud
 
-### Steps to Deploy on Streamlit Cloud:
+How to Use:
+Open the link above in your web browser.
 
-1. **Create a Streamlit Cloud Account**:
-   - If you don't have a Streamlit Cloud account, sign up at [Streamlit Cloud](https://streamlit.io/cloud).
+Enter an ingredient or dish name (e.g., "gyoza") in the search box.
 
-2. **Connect Your GitHub Repository**:
-   - Go to the Streamlit Cloud dashboard and click on "New App".
-   - Connect your GitHub account and select the repository for this project (`recipe_recommender`).
+The system will display a list of recommended Japanese recipes, including their summaries, ingredients, and instructions.
 
-3. **Configure the App**:
-   - Set the branch to `main` (or the branch where your code is located).
-   - Set the main file path to `app.py`.
-   - Add any necessary environment variables (if required).
-
-4. **Deploy the App**:
-   - Click "Deploy" to deploy the app on Streamlit Cloud.
-   - Once deployed, Streamlit Cloud will provide a public URL for your app.
-
-5. **Access the App**:
-   - Share the public URL with others to allow them to interact with the Recipe Recommender System.
+Click on the "View Full Recipe" link to see the original recipe on AllRecipes. 
 
 ---
 
