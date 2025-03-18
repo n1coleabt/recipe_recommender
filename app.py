@@ -40,7 +40,7 @@ def load_faiss_index():
             df = pd.read_csv(csv_file)
 
             # Check if required columns exist
-            required_columns = {"name", "ingredients", "process", "url"}  # Ensure "name" is included
+            required_columns = {"title", "ingredients", "instructions", "url"}
             if not required_columns.issubset(df.columns):
                 st.error(f"Error: CSV must contain columns: {', '.join(required_columns)}")
                 return None, None
@@ -48,7 +48,7 @@ def load_faiss_index():
             # Convert DataFrame to JSON
             recipes = df.to_dict(orient="records")
             with open(json_file, "w", encoding="utf-8") as f:
-                json.dump(recipes, f, indent=4, ensure_ascii=False)  # Ensure Unicode is preserved
+                json.dump(recipes, f, indent=4)
 
         # Load recipes JSON
         with open(json_file, "r", encoding="utf-8") as f:
@@ -97,14 +97,6 @@ def retrieve_recipes(query, k=5):
 
     return results
 
-# Function to clean text (remove unnecessary phrases like "Chef john")
-def clean_text(text):
-    # List of unwanted phrases to remove
-    unwanted_phrases = ["Chef john", "Dotdash Meredith Food Studios", "Grant Webster / Food Styling", "DOTDASH MEREDITH FOOD STUDIOS"]
-    for phrase in unwanted_phrases:
-        text = text.replace(phrase, "")
-    return text.strip()
-
 # Summary Generator
 def generate_summary(recipe):
     title = recipe.get("name", "Unknown Recipe")
@@ -121,10 +113,6 @@ def generate_summary(recipe):
 
     if not instructions_raw or instructions_raw.lower() in ["nan", "none", "null"]:
         instructions_raw = "No instructions provided in the dataset."
-
-    # Clean the summary and instructions
-    summary_raw = clean_text(summary_raw)
-    instructions_raw = clean_text(instructions_raw)
 
     if isinstance(ingredients_raw, str):
         ingredients_list = ingredients_raw.split(" | ")
