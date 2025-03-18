@@ -40,7 +40,7 @@ def load_faiss_index():
             df = pd.read_csv(csv_file)
 
             # Check if required columns exist
-            required_columns = {"title", "ingredients", "instructions", "url"}
+            required_columns = {"name", "ingredients", "process", "url"}  # Ensure "name" is included
             if not required_columns.issubset(df.columns):
                 st.error(f"Error: CSV must contain columns: {', '.join(required_columns)}")
                 return None, None
@@ -99,7 +99,7 @@ def retrieve_recipes(query, k=5):
 
 # Summary Generator
 def generate_summary(recipe):
-    title = recipe.get("name", "Unknown Recipe")
+    title = recipe.get("name", "Unknown Recipe")  # Safely get the recipe name
     summary_raw = recipe.get("summary", "").strip()
     if not summary_raw:
         summary_raw = "No summary available."
