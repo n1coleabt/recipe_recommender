@@ -22,7 +22,7 @@ Welcome to the **Recipe Recommender System**! This project is designed to help u
 The Recipe Recommender System is a web-based application that allows users to search for Japanese recipes by entering an ingredient or dish name. The system uses web scraping to collect recipe data, processes it, and leverages machine learning models (fine-tuned GPT-2) and FAISS for efficient recipe retrieval. The user interface is built using Streamlit, making it easy to use and interact with.
 
 ### Key Features:
-- **Web Scraping**: Collects recipe data from AllRecipes.
+- **Web Scraping**: Collects recipe data from AllRecipes: https://www.allrecipes.com/recipes/17491/world-cuisine/asian/japanese/main-dishes/ 
 - **Data Processing**: Cleans and structures the data for machine learning.
 - **Machine Learning**: Fine-tunes a GPT-2 model for recipe recommendations.
 - **FAISS Integration**: Efficiently retrieves similar recipes based on user queries.
