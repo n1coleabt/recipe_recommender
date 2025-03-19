@@ -40,7 +40,7 @@ def load_faiss_index():
             df = pd.read_csv(csv_file)
 
             # Check if required columns exist
-            required_columns = {"title", "ingredients", "instructions", "url"}
+            required_columns = {"name", "summary", "ingredients", "process", "url"}
             if not required_columns.issubset(df.columns):
                 st.error(f"Error: CSV must contain columns: {', '.join(required_columns)}")
                 return None, None
@@ -70,7 +70,7 @@ def load_llm():
         model_name,
         torch_dtype=torch.float16,  # Enables lower precision for reduced memory usage
         device_map="auto",
-        offload_folder="./offload"  # Add this line to specify an offload folder
+        offload_folder="./offload"
     )
 
     return model, tokenizer
@@ -97,43 +97,36 @@ def retrieve_recipes(query, k=5):
     
     return results
 
-# Summary Generator
+# Function to clean up text fields
+def clean_text(value, default="N/A"):
+    if isinstance(value, str) and value.strip():
+        return value.strip()
+    return default
+
+# Function to generate structured summary
 def generate_summary(recipe):
-    title = recipe.get("name", "Unknown Recipe")  
-    summary_raw = recipe.get("summary", "").strip()
-    if not summary_raw:
-        summary_raw = "No summary available."
+    title = clean_text(recipe.get("name"))
+    summary = clean_text(recipe.get("summary"))
+    ingredients_raw = clean_text(recipe.get("ingredients"))
+    instructions_raw = clean_text(recipe.get("process"))
 
-    ingredients_raw = recipe.get("ingredients", "No ingredients available.")
-    
-    instructions_raw = recipe.get("process", "")
-    if not isinstance(instructions_raw, str):  
-        instructions_raw = str(instructions_raw)
-    instructions_raw = instructions_raw.strip()
-
-    if not instructions_raw or instructions_raw.lower() in ["nan", "none", "null"]:  
-        instructions_raw = "No instructions provided in the dataset."
-
+    # Convert ingredients to a formatted list
     if isinstance(ingredients_raw, str):
-        ingredients_list = ingredients_raw.split(" | ")  
-    elif isinstance(ingredients_raw, list) and all(isinstance(i, str) and len(i) > 1 for i in ingredients_raw):
-        ingredients_list = ingredients_raw  
+        ingredients_list = ingredients_raw.split(" | ")
     else:
-        ingredients_list = ["No ingredients available."]
+        ingredients_list = ["N/A"]
 
-    # Format ingredients properly
-    ingredients_str = "\n".join([f"- {ing.strip()}" for ing in ingredients_list if len(ing.strip()) > 1])
+    formatted_ingredients = "\n".join([f"- {ing.strip()}" for ing in ingredients_list if ing.strip()])
 
-    # Format instructions step-by-step
-    instructions_str = "\n".join([f"{i+1}. {step.strip()}" for i, step in enumerate(instructions_raw.split(" | ")) if step.strip()])
+    # Convert instructions to a formatted step-by-step list
+    if isinstance(instructions_raw, str):
+        instructions_list = instructions_raw.split(" | ")
+    else:
+        instructions_list = ["N/A"]
 
-    # Return formatted content
-    return f"\n{summary_raw}\n\n**Ingredients:**\n{ingredients_str}\n\n**Instructions:**\n{instructions_str}"
+    formatted_instructions = "\n".join([f"{i+1}. {step.strip()}" for i, step in enumerate(instructions_list) if step.strip()])
 
-
-
-
-
+    return title, summary, formatted_ingredients, formatted_instructions
 
 # Streamlit UI
 st.title("🍜 Recipe Recommender (Japanese Cuisine Only)")
@@ -145,19 +138,14 @@ if query:
 
     if recipes:
         for recipe in recipes:
-            summary = generate_summary(recipe)
-            st.subheader(recipe.get("name", "Unknown Recipe"))  # Safely get title
+            title, summary, formatted_ingredients, formatted_instructions = generate_summary(recipe)
+            
+            st.subheader(title)
             st.write("**Summary:**", summary)
-            # Retrieve and format ingredients correctly
-            ingredients_raw = recipe.get("ingredients", "No ingredients available.")
-            if isinstance(ingredients_raw, str):
-                ingredients_list = ingredients_raw.split(" | ")  # Properly split string
-            elif isinstance(ingredients_raw, list):
-                ingredients_list = [i.strip() for i in ingredients_raw if len(i.strip()) > 1]  # Ensure clean formatting
-            else:
-                ingredients_list = ["No ingredients available."]
-
-
+            st.write("**Ingredients:**")
+            st.markdown(formatted_ingredients)
+            st.write("**Instructions:**")
+            st.markdown(formatted_instructions)
             st.write(f"[View Full Recipe]({recipe.get('url', '#')})")
     else:
         st.warning("No recipes found. Try a different ingredient or dish.")
@@ -165,5 +153,3 @@ if query:
 # Footer
 st.markdown("---")
 st.markdown("Recipes sourced from AllRecipes")
-
-# Fix added
