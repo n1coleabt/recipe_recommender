@@ -129,7 +129,7 @@ def generate_summary(recipe):
     return title, summary, formatted_ingredients, formatted_instructions
 
 # Streamlit UI
-st.title("🍜 Recipe Recommender (Japanese Cuisine Only)")
+st.title("🍜 Recipe Recommender with RAG (Japanese Cuisine Only)")
 st.write("Enter an ingredient or dish to get **Japanese recipe** recommendations.")
 
 query = st.text_input("Enter an ingredient or dish:")
