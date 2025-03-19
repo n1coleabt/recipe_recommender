@@ -165,3 +165,5 @@ if query:
 # Footer
 st.markdown("---")
 st.markdown("Recipes sourced from AllRecipes")
+
+# Fix added
